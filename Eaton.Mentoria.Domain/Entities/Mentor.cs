@@ -7,6 +7,8 @@ namespace Eaton.Mentoria.Domain.Entities
     {
        public int MentorId { get; set; }
        [ForeignKey("UsuarioId")]
+       [Required]
+       [stringLenght(100)]
        public Usuario usuarios { get; set; }
        public int UsuarioId { get; set; }
        
