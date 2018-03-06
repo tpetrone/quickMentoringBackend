@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Eaton.Mentoria.Domain.Entities
 {
-    public class Mentor
+    public class MentorDomain
     {
        public int MentorId { get; set; }
        [ForeignKey("UsuarioId")]
-       public Usuario usuarios { get; set; }
+       public UsuarioDomain usuarios { get; set; }
        public int UsuarioId { get; set; }
        
         

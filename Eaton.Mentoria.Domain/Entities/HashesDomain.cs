@@ -4,16 +4,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Eaton.Mentoria.Domain.Entities
 {
-    public class Hashes
+    public class HashesDomain
     {
         public int HashesId { get; set; }
         
         [ForeignKey("UsuarioId")]
-        public Usuario usuarios { get; set; }
+        public UsuarioDomain usuarios { get; set; }
         public int UsuarioId { get; set; }
+        
+        [Required]
+        [StringLength(100)]
         public string Hash { get; set; }
 
-        public ICollection<Usuario> Usuarios { get; set; }
+        public ICollection<UsuarioDomain> Usuarios { get; set; }
         
         
     }
