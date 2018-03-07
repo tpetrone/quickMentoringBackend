@@ -5,7 +5,7 @@ namespace Eaton.Mentoria.Repository.Context
 {
     public class IMentoriaContext : DbContext
     {
-        public IMetoriaContext(DbContextOptions<IMentoriaContext> options)
+        public IMentoriaContext(DbContextOptions<IMentoriaContext> options)
         : base(options)
         {
             

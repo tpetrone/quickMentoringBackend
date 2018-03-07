@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Eaton.Mentoria.Domain.Contracts;
 using System.Linq;
 using Eaton.Mentoria.Repository.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Eaton.Mentoria.Repository.Repositories
 {
@@ -29,50 +30,33 @@ namespace Eaton.Mentoria.Repository.Repositories
                 
                 throw new System.Exception(ex.Message);
             }
-        }
-             
-        public int Atualizar(T dados)
-        {
-            throw new NotImplementedException();
-        }
+        }            
 
         public T BuscarPorId(int id, string[] includes = null)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var chavePrimaria = _dbContext.Model.FindEntityType(typeof(T)).FindPrimaryKey().Properties[0];
+
+                var query = _dbContext.Set<T>().AsQueryable();
+
+                if(includes == null) return query.FirstOrDefault(e => EF.Property<int>(e, chavePrimaria.Name) == id);
+
+                    foreach (var item in includes)
+                    {
+                        query = query.Include(item);
+                    } 
+
+                return _dbContext.Set<T>().FirstOrDefault(e => EF.Property<int>(e, chavePrimaria.Name) == id);
+            }
+            catch (System.Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         public int Deletar(T dados)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int inserir(T dados)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<T> Listar(string[] includes = null)
-        {
-            throw new NotImplementedException();
-        }       
-
-    public T BuscaPorId(int id, string[] includes = null)
-    {
-        try
-        {
-            var chavePrimaria = _dbContext.Model.FindEntityType(typeof(T)).FindPrimaryKey().Properties[0];
-
-            return _dbContext.Set<T>().FirstOrDefault(e => EF.Property<int>(e, chavePrimaria.Name) == id);
-        }
-        catch (System.Exception ex)
-        {
-
-            throw new Exception(ex.Message);
-        }
-    }
-
-     
-    public int Deletar(T dados)
         {
             
             try
@@ -88,10 +72,11 @@ namespace Eaton.Mentoria.Repository.Repositories
              
         }
 
+      
+
         public int Inserir(T dados)
         {
-            
-            try
+           try
             {
                 _dbContext.Set<T>().Add(dados);
                 return _dbContext.SaveChanges();
@@ -101,7 +86,6 @@ namespace Eaton.Mentoria.Repository.Repositories
                 
                 throw new Exception(ex.Message);
             }
-             
         }
 
         public IEnumerable<T> Listar(string[] includes = null)
@@ -115,7 +99,7 @@ namespace Eaton.Mentoria.Repository.Repositories
 
                 foreach (var item in includes)
                 {
-                    query = query.include(item);
+                    query = query.Include(item);
                 }  
 
                 return query.ToList();              
@@ -128,26 +112,6 @@ namespace Eaton.Mentoria.Repository.Repositories
              
         }
 
-        public int inserir(T dados)
-        {
-            
-            throw new NotImplementedException();
-             
-        }
-
-        public T BuscarPorId(int id, string[] includes = null)
-        {
-            
-            throw new NotImplementedException();
-             
-        }
-    
-
-        public interface IMentoriaContext
-        {
-            int SaveChanges();
-            object Set<T>();
-        }
     }  
      
 }

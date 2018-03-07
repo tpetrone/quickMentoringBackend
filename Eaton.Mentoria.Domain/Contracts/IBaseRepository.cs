@@ -8,7 +8,7 @@ namespace Eaton.Mentoria.Domain.Contracts
 
         int Atualizar(T dados);
 
-        int inserir(T dados);
+        int Inserir(T dados);
 
         int Deletar(T dados);
 
