@@ -6,15 +6,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Eaton.Mentoria.Domain.Entities
 {
     public class MentoriaDomain
+    
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MentoriaId { get; set; }
         
-        [ForeignKey("MentorId")]
-        public MentorDomain Mentores { get; set; }
-        public int MentorId { get; set; }
+        [ForeignKey("UsuarioId")]
+        public UsuarioDomain Usuario { get; set; }
+        public int UsuarioId { get; set; }
         
         [ForeignKey("CategoriaId")]
-        public CategoriaDomain Categorias { get; set; }
+        public CategoriaDomain Categoria { get; set; }
         public int CategoriaId { get; set; }
         public Boolean Ativa { get; set; }
         public int MyProperty { get; set; }
@@ -23,7 +26,8 @@ namespace Eaton.Mentoria.Domain.Entities
         [StringLength(20)]
         public string Sede { get; set; }
 
-        public ICollection<AplicacaoDomain> Aplicacoes { get; set; }      
+        public ICollection<AplicacaoDomain> Aplicacoes { get; set; }
+    
 
     }
 }

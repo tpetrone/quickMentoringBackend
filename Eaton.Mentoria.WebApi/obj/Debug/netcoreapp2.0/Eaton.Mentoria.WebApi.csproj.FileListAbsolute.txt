@@ -8,3 +8,7 @@ C:\Users\CodeXP\Desktop\EATON\Eaton.Mentoria.Solution\Eaton.Mentoria.WebApi\obj\
 C:\Users\CodeXP\Desktop\EATON\Eaton.Mentoria.Solution\Eaton.Mentoria.WebApi\obj\Debug\netcoreapp2.0\Eaton.Mentoria.WebApi.AssemblyInfo.cs
 C:\Users\CodeXP\Desktop\EATON\Eaton.Mentoria.Solution\Eaton.Mentoria.WebApi\obj\Debug\netcoreapp2.0\Eaton.Mentoria.WebApi.dll
 C:\Users\CodeXP\Desktop\EATON\Eaton.Mentoria.Solution\Eaton.Mentoria.WebApi\obj\Debug\netcoreapp2.0\Eaton.Mentoria.WebApi.pdb
+C:\Users\CodeXP\Desktop\EATON\Eaton.Mentoria.Solution\Eaton.Mentoria.WebApi\bin\Debug\netcoreapp2.0\Eaton.Mentoria.Domain.dll
+C:\Users\CodeXP\Desktop\EATON\Eaton.Mentoria.Solution\Eaton.Mentoria.WebApi\bin\Debug\netcoreapp2.0\Eaton.Mentoria.Repository.dll
+C:\Users\CodeXP\Desktop\EATON\Eaton.Mentoria.Solution\Eaton.Mentoria.WebApi\bin\Debug\netcoreapp2.0\Eaton.Mentoria.Domain.pdb
+C:\Users\CodeXP\Desktop\EATON\Eaton.Mentoria.Solution\Eaton.Mentoria.WebApi\bin\Debug\netcoreapp2.0\Eaton.Mentoria.Repository.pdb

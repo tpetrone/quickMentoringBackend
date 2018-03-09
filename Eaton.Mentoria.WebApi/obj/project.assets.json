@@ -3215,7 +3215,7 @@
           "lib/netstandard1.3/System.ComponentModel.dll": {}
         }
       },
-      "System.ComponentModel.Annotations/4.4.0": {
+      "System.ComponentModel.Annotations/4.5.0-preview1-26216-02": {
         "type": "package",
         "compile": {
           "ref/netcoreapp2.0/_._": {}
@@ -4745,6 +4745,35 @@
         },
         "runtime": {
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
+        }
+      },
+      "Eaton.Mentoria.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "System.ComponentModel.Annotations": "4.5.0-preview1-26216-02"
+        },
+        "compile": {
+          "bin/placeholder/Eaton.Mentoria.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Eaton.Mentoria.Domain.dll": {}
+        }
+      },
+      "Eaton.Mentoria.Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Eaton.Mentoria.Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "2.0.1",
+          "Microsoft.EntityFrameworkCore.Relational": "2.0.1",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.0.1"
+        },
+        "compile": {
+          "bin/placeholder/Eaton.Mentoria.Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Eaton.Mentoria.Repository.dll": {}
         }
       }
     }
@@ -8335,10 +8364,10 @@
         "system.componentmodel.nuspec"
       ]
     },
-    "System.ComponentModel.Annotations/4.4.0": {
-      "sha512": "29K3DQ+IGU7LBaMjTo7SI7T7X/tsMtLvz1p56LJ556Iu0Dw3pKZw5g8yCYCWMRxrOF0Hr0FU0FwW0o42y2sb3A==",
+    "System.ComponentModel.Annotations/4.5.0-preview1-26216-02": {
+      "sha512": "dQGK4S1A8yJqNZal/7U1Vlgk0r6d0Cc8+v8l20f7lxGeJDP+Wso8QNk2uNMRj7z/siWL//o+5YRyW74j40+EKw==",
       "type": "package",
-      "path": "system.componentmodel.annotations/4.4.0",
+      "path": "system.componentmodel.annotations/4.5.0-preview1-26216-02",
       "files": [
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -8351,6 +8380,7 @@
         "lib/netstandard1.4/System.ComponentModel.Annotations.dll",
         "lib/netstandard2.0/System.ComponentModel.Annotations.dll",
         "lib/portable-net45+win8/_._",
+        "lib/uap10.0.16300/_._",
         "lib/win8/_._",
         "lib/xamarinios10/_._",
         "lib/xamarinmac20/_._",
@@ -8409,12 +8439,13 @@
         "ref/netstandard2.0/System.ComponentModel.Annotations.dll",
         "ref/netstandard2.0/System.ComponentModel.Annotations.xml",
         "ref/portable-net45+win8/_._",
+        "ref/uap10.0.16300/_._",
         "ref/win8/_._",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.componentmodel.annotations.4.4.0.nupkg.sha512",
+        "system.componentmodel.annotations.4.5.0-preview1-26216-02.nupkg.sha512",
         "system.componentmodel.annotations.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -12526,10 +12557,22 @@
         "windowsazure.storage.8.1.4.nupkg.sha512",
         "windowsazure.storage.nuspec"
       ]
+    },
+    "Eaton.Mentoria.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Eaton.Mentoria.Domain/Eaton.Mentoria.Domain.csproj",
+      "msbuildProject": "../Eaton.Mentoria.Domain/Eaton.Mentoria.Domain.csproj"
+    },
+    "Eaton.Mentoria.Repository/1.0.0": {
+      "type": "project",
+      "path": "../Eaton.Mentoria.Repository/Eaton.Mentoria.Repository.csproj",
+      "msbuildProject": "../Eaton.Mentoria.Repository/Eaton.Mentoria.Repository.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
+      "Eaton.Mentoria.Domain >= 1.0.0",
+      "Eaton.Mentoria.Repository >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.0.5",
       "Microsoft.NETCore.App >= 2.0.0"
     ]
@@ -12561,7 +12604,14 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\CodeXP\\Desktop\\EATON\\Eaton.Mentoria.Solution\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj": {
+              "projectPath": "C:\\Users\\CodeXP\\Desktop\\EATON\\Eaton.Mentoria.Solution\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj"
+            },
+            "C:\\Users\\CodeXP\\Desktop\\EATON\\Eaton.Mentoria.Solution\\Eaton.Mentoria.Repository\\Eaton.Mentoria.Repository.csproj": {
+              "projectPath": "C:\\Users\\CodeXP\\Desktop\\EATON\\Eaton.Mentoria.Solution\\Eaton.Mentoria.Repository\\Eaton.Mentoria.Repository.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

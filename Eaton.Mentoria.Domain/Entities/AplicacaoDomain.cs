@@ -6,21 +6,26 @@ namespace Eaton.Mentoria.Domain.Entities
 {
     public class AplicacaoDomain
     {
+        
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AplicacaoId { get; set; }
         
         [ForeignKey("MentoradoId")]
-        public MentoradoDomain Mentorados { get; set; }
-        public int MentoradoId { get; set; }
+        public UsuarioDomain Usuario { get; set; }
+        public int UsuarioId { get; set; }
         
         [ForeignKey("MentoriaId")]
-        public MentoriaDomain Mentorias { get; set; }
+        public MentoriaDomain Mentoria { get; set; }
         public int MentoriaId { get; set; }
         
         [Required]
         [StringLength(200)]
         public string justificativa { get; set; }  
 
-        public ICollection<MentoriaDomain> Mentoria { get; set; } 
+        
+
+    
         
 
         
