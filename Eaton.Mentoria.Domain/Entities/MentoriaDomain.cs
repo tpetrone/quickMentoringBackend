@@ -20,11 +20,12 @@ namespace Eaton.Mentoria.Domain.Entities
         public CategoriaDomain Categoria { get; set; }
         public int CategoriaId { get; set; }
         public Boolean Ativa { get; set; }
-        public int MyProperty { get; set; }
         
-        [Required]
-        [StringLength(20)]
-        public string Sede { get; set; }
+        
+        [ForeignKey("SedeId")]
+        public SedeDomain Sede { get; set; }
+
+        public int SedeId { get; set; }
 
         public ICollection<AplicacaoDomain> Aplicacoes { get; set; }
     

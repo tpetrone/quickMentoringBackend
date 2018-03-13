@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Eaton.Mentoria.Domain.Entities
 {
     public class UsuarioDomain
-    //Usuario é definida como a classe pai das classes filhas: mentor e mentorado. Usuário é uma tabela
+    
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,17 +24,13 @@ namespace Eaton.Mentoria.Domain.Entities
         [StringLength(20)]
         public string Role { get; set; }
         public Boolean Ativo { get; set; }
-        
-        [Required]
-        [StringLength(50)]
-        public string Sede { get; set; }    
 
         public ICollection<HashesDomain> Hashes { get; set; } 
         
         public ICollection<AplicacaoDomain> Aplicacoes { get; set; } 
         public ICollection<MentoriaDomain> Mentorias { get; set; }
-        public ICollection<NotaDomain> Notas { get; set; }
+        public ICollection<NotaDomain> ListaUsuarioGanhouNotas { get; set; }
+        public ICollection<NotaDomain> ListaUsuarioDeuNotas { get; set; }
 
-
-    }
+        }
 }
