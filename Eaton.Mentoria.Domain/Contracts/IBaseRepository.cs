@@ -13,7 +13,6 @@ namespace Eaton.Mentoria.Domain.Contracts
         int Deletar(T dados);
 
         T BuscarPorId(int id, string[] includes = null);
-
-         
+       
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,6 +15,11 @@ namespace Eaton.Mentoria.Domain.Entities
         [Required]
         [StringLength(100)]
         public string Nome { get; set; }
+
+        public IEnumerable<MentoriaDomain> Listar()
+        {
+            throw new NotImplementedException();
+        }
 
         public ICollection<MentoriaDomain> Mentorias { get; set; }
 
