@@ -10,6 +10,9 @@ using Microsoft.EntityFrameworkCore;
 using Eaton.Mentoria.Repository.Context;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
+using Eaton.Mentoria.Domain.Contracts;
+using Eaton.Mentoria.Repository.Repositories;
 
 namespace Eaton.Mentoria.WebApi
 {
@@ -20,9 +23,7 @@ namespace Eaton.Mentoria.WebApi
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-        }
-
-        public IConfiguration Configuration { get; }
+        }      
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -35,7 +36,10 @@ namespace Eaton.Mentoria.WebApi
                 Options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
 
-            services.AddScoped(typeof(IBaseRepository<>), typeof(IBaseRepository<>));
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            services.AddScoped(typeof(ICategoriaRepository), typeof(CategoriaRepository));
+            services.AddScoped(typeof(ISedeRepository), typeof(SedeRepository));
+            services.AddScoped(typeof(IMentoriaRepository), typeof(MentoriaRepository));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

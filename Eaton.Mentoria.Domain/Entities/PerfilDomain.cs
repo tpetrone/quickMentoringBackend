@@ -3,12 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Eaton.Mentoria.Domain.Entities
 {
-    public class PerfilDoman
+    public class PerfilDomain
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PerfilId{ get; set; }
         
         [ForeignKey("UsuarioId")]
-        public UsuarioDomain Usuarios { get; set; }
+        public UsuarioDomain Usuario { get; set; }
         public int UsuarioId { get; set; }
         
         [Required]
@@ -22,11 +24,11 @@ namespace Eaton.Mentoria.Domain.Entities
         
         [Required]
         [StringLength(50)]
-        public string sede { get; set; }
 
+        [ForeignKey("SedeId")]
+        public SedeDomain Sede { get; set; }
 
-
-
-
+        public int SedeId { get; set; }
+        
     }
 }
