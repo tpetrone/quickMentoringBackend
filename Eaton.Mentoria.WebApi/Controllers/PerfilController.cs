@@ -7,37 +7,37 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eaton.Mentoria.WebApi.Controllers
 {
-    [Route("api/[controller")]
-    public class UsuarioController : Controller
+     [Route("api/[controller")]
+    public class PerfilController : Controller
     {
-        private IUsuarioRepository _usuarioRepository;
+         private IPerfilRepository _perfilRepository;
 
-        public UsuarioController(IUsuarioRepository usuarioRepository)
+        public PerfilController(IPerfilRepository perfilRepository)
         {
-            _usuarioRepository = usuarioRepository;
+            _perfilRepository = perfilRepository;
         }
 
         [HttpGet]
         public IActionResult GetAction(){
-            return Ok(_usuarioRepository.Listar(new string[]{"Usuario"}));
+            return Ok(_perfilRepository.Listar(new string[]{"Perfil"}));
 
         }
 
         [HttpPost]
-        public IActionResult Cadastrar([FromBody] UsuarioDomain usuario)
+        public IActionResult Cadastrar([FromBody] PerfilDomain perfil)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    if(_usuarioRepository.UsuarioExiste(usuario.Email, usuario.Password, usuario.Role))
+                    if(_perfilRepository.PerfilExiste(perfil.Cep, perfil.Foto, perfil.MiniBio))
                     {
-                        return BadRequest("Usuario já cadastrado");
+                        return BadRequest("Perfil já cadastrado");
                     }
-                    _usuarioRepository.Inserir(usuario);
+                    _perfilRepository.Inserir(perfil);
                 }
 
-                return Ok(usuario);
+                return Ok(perfil);
             }
             catch (System.Exception e)
             {
@@ -46,7 +46,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
         }
             
             [HttpPut("{id}")]
-        public IActionResult Atualizar([FromBody] UsuarioDomain usuario, int id)
+        public IActionResult Atualizar([FromBody] PerfilDomain perfil, int id)
         {
             try
             {
@@ -55,12 +55,12 @@ namespace Eaton.Mentoria.WebApi.Controllers
                     return BadRequest();
                 }
 
-                if(_usuarioRepository.BuscarPorId(id) != null){
+                if(_perfilRepository.BuscarPorId(id) != null){
                         return NotFound("Usuário nâo encontrado.");
                 }
 
-                usuario.UsuarioId = id;
-                _usuarioRepository.Atualizar(usuario);
+                perfil.PerfilId = id;
+                _perfilRepository.Atualizar(perfil);
                 return Ok(id);
             }
             catch (System.Exception e)
@@ -74,22 +74,22 @@ namespace Eaton.Mentoria.WebApi.Controllers
         {
             try
             {
-                //Busca o usuário do id passado
-                var usuario = _usuarioRepository.BuscarPorId(id);
+                //Busca o Perfil do id passado
+                var perfil = _perfilRepository.BuscarPorId(id);
 
-                //Verifica se encontrou o usuário para o id passado, caso na encontre retorna NotFound
-                if(usuario == null)
+                //Verifica se encontrou o Perfil para o id passado, caso na encontre retorna NotFound
+                if(perfil == null)
                     return NotFound();
 
-                //Caso tenha encontrado o usuario exclui
-                _usuarioRepository.Deletar(usuario);
-                return Ok(usuario);
+                //Caso tenha encontrado exclui o perfil
+                _perfilRepository.Deletar(perfil);
+                return Ok(perfil);
             }
             catch (System.Exception e)
             {
                 return BadRequest(e.Message);
             }
-        }  
-        
+        }      
+
     }
 }

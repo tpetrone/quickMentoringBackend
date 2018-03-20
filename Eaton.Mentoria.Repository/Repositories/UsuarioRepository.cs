@@ -1,10 +1,16 @@
+using System.Linq;
+using Eaton.Mentoria.Domain.Contracts;
+using Eaton.Mentoria.Domain.Entities;
+using Eaton.Mentoria.Repository.Context;
+
+
 namespace Eaton.Mentoria.Repository.Repositories
 {
-    public class UsuarioRepository : BaseREpository<UsuarioDomain>, IUsuarioRepository
+    public class UsuarioRepository : BaseRepository<UsuarioDomain>, IUsuarioRepository
     {
-        private readonly IUsuarioContext _dbContext;
-        public UsuarioRepository(IUsuarioContext iusuariocontext):
-        bsase (iusuariocontext)
+        private readonly IMentoriaContext _dbContext;
+        public UsuarioRepository(IMentoriaContext iusuariocontext):
+        base (iusuariocontext)
         {
             _dbContext = iusuariocontext;
         }
@@ -18,7 +24,5 @@ namespace Eaton.Mentoria.Repository.Repositories
             return false;
         }
 
-
-        
     }
 }
