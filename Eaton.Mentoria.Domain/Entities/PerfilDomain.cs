@@ -12,9 +12,13 @@ namespace Eaton.Mentoria.Domain.Entities
         [ForeignKey("UsuarioId")]
         public UsuarioDomain Usuario { get; set; }
         public int UsuarioId { get; set; }
+
+        [Required]
+        [StringLength(150)]
+        public string Nome { get; set; }
         
         [Required]
-        [StringLength(50)]
+        [StringLength(650)]
         public string MiniBio { get; set; }
         public string Foto { get; set; }
         

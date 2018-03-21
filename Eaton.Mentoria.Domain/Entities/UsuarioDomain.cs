@@ -25,6 +25,8 @@ namespace Eaton.Mentoria.Domain.Entities
         public string Role { get; set; }
         public Boolean Ativo { get; set; }
 
+        public virtual PerfilDomain Perfil { get; set; }
+
         public ICollection<HashesDomain> Hashes { get; set; } 
         
         public ICollection<AplicacaoDomain> Aplicacoes { get; set; } 

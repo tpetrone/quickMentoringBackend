@@ -3,6 +3,7 @@ using System.Linq;
 using Eaton.Mentoria.Domain.Contracts;
 using Eaton.Mentoria.Domain.Entities;
 using Eaton.Mentoria.Repository.Context;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eaton.Sede.WebApi.Controllers
@@ -19,11 +20,13 @@ namespace Eaton.Sede.WebApi.Controllers
         }
 
          [HttpGet]
+        [Authorize("Bearer")]
         public IActionResult GetAction(){
             return Ok(_sedeRepository.Listar());
         }  
-
+        
         [HttpPost]
+        [Authorize("Bearer", Roles = "Admin")]
         public IActionResult Cadastrar([FromBody] SedeDomain sede)
         {
              try
@@ -48,6 +51,7 @@ namespace Eaton.Sede.WebApi.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize("Bearer", Roles = "Admin")]
         public IActionResult Atualizar([FromBody] SedeDomain sede, int id)
         {
             try

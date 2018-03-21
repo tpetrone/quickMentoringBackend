@@ -11,9 +11,10 @@ using System;
 namespace Eaton.Mentoria.Repository.Migrations
 {
     [DbContext(typeof(IMentoriaContext))]
-    partial class IMentoriaContextModelSnapshot : ModelSnapshot
+    [Migration("20180321000104_Atualizacao_Perfil")]
+    partial class Atualizacao_Perfil
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

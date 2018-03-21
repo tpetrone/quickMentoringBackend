@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eaton.Mentoria.WebApi.Controllers
 {
-     [Route("api/[controller")]
+     [Route("api/[controller]")]
     public class PerfilController : Controller
     {
          private IPerfilRepository _perfilRepository;

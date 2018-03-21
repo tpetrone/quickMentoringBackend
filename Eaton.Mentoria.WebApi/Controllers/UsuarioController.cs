@@ -1,13 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Principal;
 using Eaton.Mentoria.Domain.Contracts;
 using Eaton.Mentoria.Domain.Entities;
 using Eaton.Mentoria.Repository.Context;
+using Eaton.Mentoria.WebApi.util;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Eaton.Mentoria.WebApi.Controllers
 {
-    [Route("api/[controller")]
+    [Route("api/[controller]")]
     public class UsuarioController : Controller
     {
         private IUsuarioRepository _usuarioRepository;
@@ -24,13 +29,15 @@ namespace Eaton.Mentoria.WebApi.Controllers
         }
 
         [HttpPost]
+        [Route("Cadastrar")]
         public IActionResult Cadastrar([FromBody] UsuarioDomain usuario)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    if(_usuarioRepository.UsuarioExiste(usuario.Email, usuario.Password, usuario.Role))
+                    UsuarioDomain retornoUsuario = _usuarioRepository.UsuarioExiste(usuario.Email, usuario.Password, usuario.Role);
+                    if(retornoUsuario != null)
                     {
                         return BadRequest("Usuario já cadastrado");
                     }
@@ -44,8 +51,58 @@ namespace Eaton.Mentoria.WebApi.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpPost]
+        [Route("Login")]
+        public IActionResult Login([FromBody]UsuarioDomain usuario,
+            [FromServices]SigningConfigurations signingConfigurations,
+            [FromServices]TokenConfigurations tokenConfigurations)
+        {
+            try
+            {
+                
+                UsuarioDomain retornoUsuario = _usuarioRepository.UsuarioExiste(usuario.Email, usuario.Password, usuario.Role);
+                if(retornoUsuario != null)
+                {
+                    ClaimsIdentity identity = new ClaimsIdentity(
+                    new GenericIdentity(retornoUsuario.UsuarioId.ToString(), "Login"),
+                    new[] {
+                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
+                        new Claim(JwtRegisteredClaimNames.UniqueName, retornoUsuario.UsuarioId.ToString()),
+                        new Claim("Nome", retornoUsuario.Perfil.Nome),
+                    });
+               
+                    identity.AddClaim(new Claim(ClaimTypes.Role, retornoUsuario.Role));
+
+                    var handler = new JwtSecurityTokenHandler();
+                    var securityToken = handler.CreateToken(new SecurityTokenDescriptor
+                    {
+                        Issuer = tokenConfigurations.Issuer,
+                        Audience = tokenConfigurations.Audience,
+                        SigningCredentials = signingConfigurations.SigningCredentials,
+                        Subject = identity
+                    });
+                    var token = handler.WriteToken(securityToken);
+
+                    var retorno = new
+                    {
+                        authenticated = true,
+                        accessToken = token,
+                        message = "OK"
+                    };
+
+                    return Ok(retorno);
+                }
+                    
+                return NotFound("Email ou senha inválido!");
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
             
-            [HttpPut("{id}")]
+        [HttpPut("{id}")]
         public IActionResult Atualizar([FromBody] UsuarioDomain usuario, int id)
         {
             try

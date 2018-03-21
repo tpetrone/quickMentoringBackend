@@ -4,7 +4,7 @@ namespace Eaton.Mentoria.Domain.Contracts
 {
     public interface IUsuarioRepository : IBaseRepository<UsuarioDomain>
     {
-        bool UsuarioExiste(string email,string password,string role);
+        UsuarioDomain UsuarioExiste(string email,string password,string role);
          
     }
 }

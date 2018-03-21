@@ -2,7 +2,7 @@ using System.Linq;
 using Eaton.Mentoria.Domain.Contracts;
 using Eaton.Mentoria.Domain.Entities;
 using Eaton.Mentoria.Repository.Context;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace Eaton.Mentoria.Repository.Repositories
 {
@@ -15,14 +15,13 @@ namespace Eaton.Mentoria.Repository.Repositories
             _dbContext = iusuariocontext;
         }
 
-        public bool UsuarioExiste(string email, string password, string role)
+        public UsuarioDomain UsuarioExiste(string email, string password, string role)
         {
-            if(_dbContext.Usuarios.Any(x => x.Email==email && x.Password== password && x.Role==role ))
-            {
-                return true;
-            }
-            return false;
+            return _dbContext.Usuarios.Include("Perfil").FirstOrDefault(x => x.Email.ToLower()==email.ToLower() && x.Password== password && x.Role==role );
+            
         }
+
+        
 
     }
 }
