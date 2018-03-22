@@ -19,8 +19,7 @@ namespace Eaton.Sede.WebApi.Controllers
             _sedeRepository = sedeRepository;
         }
 
-         [HttpGet]
-        [Authorize("Bearer")]
+        [HttpGet]
         public IActionResult GetAction(){
             return Ok(_sedeRepository.Listar());
         }  

@@ -33,10 +33,11 @@ namespace Eaton.Mentoria.WebApi
         {
            // services.AddMvc();
            services.AddDbContext<IMentoriaContext>(options =>
-                        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                        options.UseSqlServer(Configuration.GetConnectionString("SmarterAspConnection")));
 
             services.AddMvc().AddJsonOptions(Options => {
                 Options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                Options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             });
 
                 /*

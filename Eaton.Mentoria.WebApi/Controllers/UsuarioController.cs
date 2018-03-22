@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
 using Eaton.Mentoria.Domain.Contracts;
@@ -24,7 +25,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
 
         [HttpGet]
         public IActionResult GetAction(){
-            return Ok(_usuarioRepository.Listar(new string[]{"Usuario"}));
+            return Ok(_usuarioRepository.Listar(new string[]{"Perfil"}));
 
         }
 
@@ -36,15 +37,20 @@ namespace Eaton.Mentoria.WebApi.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    UsuarioDomain retornoUsuario = _usuarioRepository.UsuarioExiste(usuario.Email, usuario.Password, usuario.Role);
+                    UsuarioDomain retornoUsuario = _usuarioRepository.BuscarPorEmail(usuario.Email);
                     if(retornoUsuario != null)
                     {
-                        return BadRequest("Usuario já cadastrado");
+                        return BadRequest("Email já cadastrado");
                     }
                     _usuarioRepository.Inserir(usuario);
+                    return Ok(usuario);
                 }
 
-                return Ok(usuario);
+                var errors = ModelState.Select(x => x.Value.Errors)
+                           .Where(y=>y.Count>0)
+                           .ToList();
+                           
+                return BadRequest(errors);
             }
             catch (System.Exception e)
             {
@@ -61,7 +67,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
             try
             {
                 
-                UsuarioDomain retornoUsuario = _usuarioRepository.UsuarioExiste(usuario.Email, usuario.Password, usuario.Role);
+                UsuarioDomain retornoUsuario = _usuarioRepository.UsuarioExiste(usuario.Email, usuario.Password);
                 if(retornoUsuario != null)
                 {
                     ClaimsIdentity identity = new ClaimsIdentity(
@@ -69,6 +75,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
                     new[] {
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
                         new Claim(JwtRegisteredClaimNames.UniqueName, retornoUsuario.UsuarioId.ToString()),
+                        new Claim("Id", retornoUsuario.UsuarioId.ToString()),
                         new Claim("Nome", retornoUsuario.Perfil.Nome),
                     });
                
@@ -88,7 +95,8 @@ namespace Eaton.Mentoria.WebApi.Controllers
                     {
                         authenticated = true,
                         accessToken = token,
-                        message = "OK"
+                        message = "OK",
+                        usuario = retornoUsuario
                     };
 
                     return Ok(retorno);
