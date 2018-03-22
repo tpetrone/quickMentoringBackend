@@ -1,0 +1,97 @@
+//Get Usuario
+http://quickmentoring-001-site1.htempurl.com/api/usuario
+{
+        "usuarioId": 1,
+        "email": "fernando.guerra@corujasdev.com.br",
+        "password": "123456",
+        "role": "Mentor",
+        "ativo": true,
+        "perfil": {
+            "perfilId": 1,
+            "usuarioId": 1,
+            "nome": "Fernando Henrique",
+            "miniBio": "Mentor na área de TI",
+            "foto": "",
+            "cep": "01548010",
+            "sede": null,
+            "sedeId": 1
+        },
+        "hashes": null,
+        "aplicacoes": null,
+        "mentorias": null,
+        "listaUsuarioGanhouNotas": null,
+        "listaUsuarioDeuNotas": null
+    }
+
+//Post Usuario
+http://quickmentoring-001-site1.htempurl.com/api/usuario/cadastrar
+{
+        "email": "helena.strada@gmail.com",
+        "password": "123456",
+        "role": "Mentor" ou "Mentorado",
+        "ativo": true,
+        "perfil": {
+            "nome": "Fernando Henrique",
+            "miniBio": "Mentor na área de Mobile",
+            "foto": "",
+            "cep": "03073060",
+            "sedeId": 1
+        }
+    }
+
+//Get Sede
+http://quickmentoring-001-site1.htempurl.com/api/sede
+[
+    {
+        "sedeId": 1,
+        "nome": "Campinas"
+    },
+    {
+        "sedeId": 2,
+        "nome": "Valinhos"
+    },
+    {
+        "sedeId": 3,
+        "nome": "Caxias do Sul"
+    },
+    {
+        "sedeId": 4,
+        "nome": "Guaratingueta"
+    },
+    {
+        "sedeId": 5,
+        "nome": "Jundiai"
+    },
+    {
+        "sedeId": 6,
+        "nome": "Mogi Mirim"
+    }
+]
+
+//Get Categoria
+http://quickmentoring-001-site1.htempurl.com/api/categoria
+[
+    {
+        "categoriaId": 1,
+        "nome": "Inglês"
+    },
+    {
+        "categoriaId": 2,
+        "nome": "Desenvolvimento Pessoal"
+    },
+    {
+        "categoriaId": 3,
+        "nome": "Informática"
+    }
+]
+
+//Post Mentoria
+http://quickmentoring-001-site1.htempurl.com/api/mentoria
+{
+    "nome" : "mentoria 1"
+    "usuarioid" : 1,
+    "categoriaid" : 1,
+    "sedeid" : 1,
+    "ativa" : 1,
+    "online" : 1
+}

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Eaton.Mentoria.Domain.Contracts;
 using Eaton.Mentoria.Domain.Entities;
 using Eaton.Mentoria.Repository.Context;
@@ -37,7 +38,11 @@ namespace Eaton.Mentoria.WebApi.Controllers
                     _perfilRepository.Inserir(perfil);
                 }
 
-                return Ok(perfil);
+                var errors = ModelState.Select(x => x.Value.Errors)
+                           .Where(y=>y.Count>0)
+                           .ToList();
+                           
+                return BadRequest(errors);
             }
             catch (System.Exception e)
             {
@@ -52,7 +57,11 @@ namespace Eaton.Mentoria.WebApi.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    return BadRequest();
+                    var errors = ModelState.Select(x => x.Value.Errors)
+                           .Where(y=>y.Count>0)
+                           .ToList();
+                           
+                    return BadRequest(errors);
                 }
 
                 if(_perfilRepository.BuscarPorId(id) != null){

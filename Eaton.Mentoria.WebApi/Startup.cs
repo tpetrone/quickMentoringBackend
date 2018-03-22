@@ -90,11 +90,19 @@ namespace Eaton.Mentoria.WebApi
                         .RequireAuthenticatedUser().Build());
                 });
 
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
+
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped(typeof(ICategoriaRepository), typeof(CategoriaRepository));
             services.AddScoped(typeof(ISedeRepository), typeof(SedeRepository));
             services.AddScoped(typeof(IMentoriaRepository), typeof(MentoriaRepository));
             services.AddScoped(typeof(IUsuarioRepository), typeof(UsuarioRepository));
+            services.AddScoped(typeof(IAplicacaoRepository), typeof(AplicacaoRepository));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -104,6 +112,8 @@ namespace Eaton.Mentoria.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("MyPolicy");
 
             app.UseMvc();
         }

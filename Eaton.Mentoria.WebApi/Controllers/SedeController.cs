@@ -41,7 +41,11 @@ namespace Eaton.Sede.WebApi.Controllers
                     
                 }                
 
-                return Ok(sede);
+                var errors = ModelState.Select(x => x.Value.Errors)
+                           .Where(y=>y.Count>0)
+                           .ToList();
+                           
+                return BadRequest(errors);
             }
             catch (System.Exception e)
             {
@@ -61,7 +65,11 @@ namespace Eaton.Sede.WebApi.Controllers
                     _sedeRepository.Atualizar(sede);
                     
                 }
-                return Ok(id);
+                var errors = ModelState.Select(x => x.Value.Errors)
+                           .Where(y=>y.Count>0)
+                           .ToList();
+                           
+                return BadRequest(errors);
             }
             catch (System.Exception e)
             {

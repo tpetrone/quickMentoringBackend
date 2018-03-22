@@ -49,7 +49,11 @@ namespace Eaton.Mentoria.WebApi.Controllers
                     
                 }                
 
-                return Ok(categoria);
+                var errors = ModelState.Select(x => x.Value.Errors)
+                           .Where(y=>y.Count>0)
+                           .ToList();
+                           
+                return BadRequest(errors);
             }
             catch (System.Exception e)
             {
@@ -68,7 +72,11 @@ namespace Eaton.Mentoria.WebApi.Controllers
                     _categoriaRepository.Atualizar(categoria);
                     
                 }
-                return Ok(id);
+                var errors = ModelState.Select(x => x.Value.Errors)
+                           .Where(y=>y.Count>0)
+                           .ToList();
+                           
+                return BadRequest(errors);
             }
             catch (System.Exception e)
             {

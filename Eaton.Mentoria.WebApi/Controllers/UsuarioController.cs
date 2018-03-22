@@ -117,7 +117,11 @@ namespace Eaton.Mentoria.WebApi.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    return BadRequest();
+                    var errors = ModelState.Select(x => x.Value.Errors)
+                           .Where(y=>y.Count>0)
+                           .ToList();
+                           
+                    return BadRequest(errors);
                 }
 
                 if(_usuarioRepository.BuscarPorId(id) != null){
