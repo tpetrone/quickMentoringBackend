@@ -85,6 +85,10 @@ namespace Eaton.Mentoria.Repository.Migrations
 
                     b.Property<int>("CategoriaId");
 
+                    b.Property<string>("Nome");
+
+                    b.Property<bool>("Online");
+
                     b.Property<int>("SedeId");
 
                     b.Property<int>("UsuarioId");

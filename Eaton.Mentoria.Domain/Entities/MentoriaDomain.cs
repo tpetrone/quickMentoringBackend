@@ -20,7 +20,8 @@ namespace Eaton.Mentoria.Domain.Entities
         public CategoriaDomain Categoria { get; set; }
         public int CategoriaId { get; set; }
         public Boolean Ativa { get; set; }
-        
+        public Boolean Online { get; set; }
+        public string Nome { get; set; }
         
         [ForeignKey("SedeId")]
         public SedeDomain Sede { get; set; }

@@ -39,7 +39,7 @@
   },
   "libraries": {
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "sha512": "Km1C2UBrfS13SlrwQ5fmMhwXDHI4fenaY34dZ4KDSP/F/uESN+Ynusif0lDMeAE33FO7g6d2LTiGRtHNTRoSug==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
@@ -274,23 +274,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\CodeXP\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/corujasdev/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\CodeXP\\Desktop\\EATON\\Eaton.Mentoria.Solution\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj",
+      "projectUniqueName": "/Users/corujasdev/visualstudiocode/dotnetcore/senai_alunos/quickMentoringBackend/Eaton.Mentoria.Domain/Eaton.Mentoria.Domain.csproj",
       "projectName": "Eaton.Mentoria.Domain",
-      "projectPath": "C:\\Users\\CodeXP\\Desktop\\EATON\\Eaton.Mentoria.Solution\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj",
-      "packagesPath": "C:\\Users\\CodeXP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\CodeXP\\Desktop\\EATON\\Eaton.Mentoria.Solution\\Eaton.Mentoria.Domain\\obj\\",
+      "projectPath": "/Users/corujasdev/visualstudiocode/dotnetcore/senai_alunos/quickMentoringBackend/Eaton.Mentoria.Domain/Eaton.Mentoria.Domain.csproj",
+      "packagesPath": "/Users/corujasdev/.nuget/packages/",
+      "outputPath": "/Users/corujasdev/visualstudiocode/dotnetcore/senai_alunos/quickMentoringBackend/Eaton.Mentoria.Domain/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\CodeXP\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/corujasdev/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"

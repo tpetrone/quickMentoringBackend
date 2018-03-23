@@ -26,9 +26,6 @@ namespace Eaton.Mentoria.Domain.Entities
         [StringLength(9)]
         public string Cep { get; set; }
         
-        [Required]
-        [StringLength(50)]
-
         [ForeignKey("SedeId")]
         public SedeDomain Sede { get; set; }
 

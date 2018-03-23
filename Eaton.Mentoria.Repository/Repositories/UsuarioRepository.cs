@@ -15,9 +15,14 @@ namespace Eaton.Mentoria.Repository.Repositories
             _dbContext = iusuariocontext;
         }
 
-        public UsuarioDomain UsuarioExiste(string email, string password, string role)
+        public UsuarioDomain BuscarPorEmail(string email)
         {
-            return _dbContext.Usuarios.Include("Perfil").FirstOrDefault(x => x.Email.ToLower()==email.ToLower() && x.Password== password && x.Role==role );
+            return _dbContext.Usuarios.Include("Perfil").FirstOrDefault(x => x.Email.ToLower()==email.ToLower());
+        }
+
+        public UsuarioDomain UsuarioExiste(string email, string password)
+        {
+            return _dbContext.Usuarios.Include("Perfil").FirstOrDefault(x => x.Email.ToLower()==email.ToLower() && x.Password == password);
             
         }
 
