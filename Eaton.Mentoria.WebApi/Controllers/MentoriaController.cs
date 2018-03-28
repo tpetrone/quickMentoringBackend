@@ -11,31 +11,34 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eaton.Mentoria.WebApi.Controllers
 {
-    
-     [Route("api/[controller]")]
+
+    [Route("api/[controller]")]
     public class MentoriaController : Controller
     {
         private IMentoriaRepository _mentoriaRepository;
+        private IAplicacaoRepository aplicacaoRepository;
 
-        //[HttpGet("mentor/{id}")]
-        //[Authorize("Bearer")]
-        //[Route("mentor")]
-        //public IActionResult GetAplicacaoMentor(int id)
-        //{
-        //    List<AplicacaoDomain> aplicacoes = _aplicacaoRepository.Listar(new string[] { "Mentorado", "Mentorado.Perfil", "Mentoria" }).Where(x => x.Mentoria.UsuarioId == id).ToList();
-        //    if (aplicacoes != null)
-        //        return Ok(aplicacoes);
-        //    else
-        //        return NotFound();
-        //}
+       
 
-        public MentoriaController(IMentoriaRepository mentoriaRepository)
+        public MentoriaController(IMentoriaRepository mentoriaRepository, IAplicacaoRepository aplicacaoRepository)
         {
             _mentoriaRepository = mentoriaRepository;
+            this.aplicacaoRepository = aplicacaoRepository;
         }
 
         [HttpGet]
-        public IActionResult GetAction(){
+        [Route("{id}/aplicacoes")]
+        public IActionResult GetAplicacoes([FromRoute]int id)
+        {
+            var aplicacoes = aplicacaoRepository.Listar(new string[] { "Mentorado", "Mentorado.Perfil", "Mentoria" }).Where(aplicacao => aplicacao.Mentoria.MentoriaId == id);
+
+            return Ok(aplicacoes);
+        }
+
+
+        [HttpGet]
+        public IActionResult GetAction()
+        {
 
             IEnumerable<MentoriaDomain> lsMentoria = _mentoriaRepository.Listar(new string[] { "Categoria", "Sede", "Usuario", "Usuario.Perfil" });
 
@@ -59,29 +62,29 @@ namespace Eaton.Mentoria.WebApi.Controllers
 
             return Ok(resultado);
         }
-     
+
 
         [HttpPost]
-        [Authorize("Bearer", Roles="Mentor")]
+        [Authorize("Bearer", Roles = "Mentor")]
         public IActionResult Cadastrar([FromBody] MentoriaDomain mentoria)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                   if(_mentoriaRepository.MentoriaExiste(mentoria.UsuarioId,mentoria.CategoriaId, mentoria.SedeId))
+                    if (_mentoriaRepository.MentoriaExiste(mentoria.UsuarioId, mentoria.CategoriaId, mentoria.SedeId))
                     {
                         return BadRequest("Mentoria já cadastrada");
                     }
 
                     _mentoriaRepository.Inserir(mentoria);
                     return Ok(mentoria);
-                }                
+                }
 
                 var errors = ModelState.Select(x => x.Value.Errors)
-                           .Where(y=>y.Count>0)
+                           .Where(y => y.Count > 0)
                            .ToList();
-                           
+
                 return BadRequest(errors);
             }
             catch (System.Exception e)
@@ -101,8 +104,9 @@ namespace Eaton.Mentoria.WebApi.Controllers
                     return BadRequest();
                 }
 
-                if(_mentoriaRepository.BuscarPorId(id) != null){
-                        return NotFound("Mentoria nâo encontrada");
+                if (_mentoriaRepository.BuscarPorId(id) != null)
+                {
+                    return NotFound("Mentoria nâo encontrada");
                 }
 
                 mentoria.MentoriaId = id;
@@ -124,7 +128,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
                 var mentoria = _mentoriaRepository.BuscarPorId(id);
 
                 //Verifica se encontrou a mentoria para o id passado, caso na encontre retorna NotFound
-                if(mentoria == null)
+                if (mentoria == null)
                     return NotFound();
 
                 //Caso tenha encontrado a mentoria exclui
@@ -135,8 +139,8 @@ namespace Eaton.Mentoria.WebApi.Controllers
             {
                 return BadRequest(e.Message);
             }
-        }      
-        
+        }
+
     }
 
 }
