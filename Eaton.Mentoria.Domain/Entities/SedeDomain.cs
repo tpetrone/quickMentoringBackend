@@ -12,8 +12,8 @@ namespace Eaton.Mentoria.Domain.Entities
 
        public string Nome {get; set;}
 
-       public ICollection<PerfilDomain> Perfis { get; set; } 
+       public virtual ICollection<PerfilDomain> Perfis { get; set; } 
 
-        public ICollection<MentoriaDomain> Mentorias { get; set; } 
+        public virtual ICollection<MentoriaDomain> Mentorias { get; set; } 
     }
 }

@@ -27,12 +27,12 @@ namespace Eaton.Mentoria.Domain.Entities
 
         public virtual PerfilDomain Perfil { get; set; }
 
-        public ICollection<HashesDomain> Hashes { get; set; } 
+        public virtual ICollection<HashesDomain> Hashes { get; set; } 
         
-        public ICollection<AplicacaoDomain> Aplicacoes { get; set; } 
-        public ICollection<MentoriaDomain> Mentorias { get; set; }
-        public ICollection<NotaDomain> ListaUsuarioGanhouNotas { get; set; }
-        public ICollection<NotaDomain> ListaUsuarioDeuNotas { get; set; }
+        public virtual ICollection<AplicacaoDomain> Aplicacoes { get; set; } 
+        public virtual ICollection<MentoriaDomain> Mentorias { get; set; }
+        public virtual ICollection<NotaDomain> ListaUsuarioGanhouNotas { get; set; }
+        public virtual ICollection<NotaDomain> ListaUsuarioDeuNotas { get; set; }
 
         }
 }

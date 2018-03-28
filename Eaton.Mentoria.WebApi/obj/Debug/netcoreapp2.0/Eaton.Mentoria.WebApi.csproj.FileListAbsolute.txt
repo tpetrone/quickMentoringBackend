@@ -26,3 +26,17 @@ C:/Users/CodeXP/Desktop/EATON/Eaton.Mentoria.Solution/Eaton.Mentoria.WebApi/bin/
 /Users/corujasdev/visualstudiocode/dotnetcore/senai_alunos/quickMentoringBackend/Eaton.Mentoria.WebApi/obj/Debug/netcoreapp2.0/Eaton.Mentoria.WebApi.AssemblyInfo.cs
 /Users/corujasdev/visualstudiocode/dotnetcore/senai_alunos/quickMentoringBackend/Eaton.Mentoria.WebApi/obj/Debug/netcoreapp2.0/Eaton.Mentoria.WebApi.dll
 /Users/corujasdev/visualstudiocode/dotnetcore/senai_alunos/quickMentoringBackend/Eaton.Mentoria.WebApi/obj/Debug/netcoreapp2.0/Eaton.Mentoria.WebApi.pdb
+C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\bin\Debug\netcoreapp2.0\Eaton.Mentoria.WebApi.deps.json
+C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\bin\Debug\netcoreapp2.0\Eaton.Mentoria.WebApi.runtimeconfig.json
+C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\bin\Debug\netcoreapp2.0\Eaton.Mentoria.WebApi.runtimeconfig.dev.json
+C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\bin\Debug\netcoreapp2.0\Eaton.Mentoria.WebApi.dll
+C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\bin\Debug\netcoreapp2.0\Eaton.Mentoria.WebApi.pdb
+C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\bin\Debug\netcoreapp2.0\Eaton.Mentoria.Domain.dll
+C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\bin\Debug\netcoreapp2.0\Eaton.Mentoria.Repository.dll
+C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\bin\Debug\netcoreapp2.0\Eaton.Mentoria.Domain.pdb
+C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\bin\Debug\netcoreapp2.0\Eaton.Mentoria.Repository.pdb
+C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\obj\Debug\netcoreapp2.0\Eaton.Mentoria.WebApi.csproj.CoreCompileInputs.cache
+C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\obj\Debug\netcoreapp2.0\Eaton.Mentoria.WebApi.AssemblyInfoInputs.cache
+C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\obj\Debug\netcoreapp2.0\Eaton.Mentoria.WebApi.AssemblyInfo.cs
+C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\obj\Debug\netcoreapp2.0\Eaton.Mentoria.WebApi.dll
+C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\obj\Debug\netcoreapp2.0\Eaton.Mentoria.WebApi.pdb

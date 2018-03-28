@@ -15,18 +15,8 @@ namespace Eaton.Mentoria.Domain.Entities
         [Required]
         [StringLength(100)]
         public string Nome { get; set; }
-
-        public IEnumerable<MentoriaDomain> Listar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ICollection<MentoriaDomain> Mentorias { get; set; }
+        public virtual ICollection<MentoriaDomain> Mentorias { get; set; }
 
         
-        
-       
-                
-
     }
 }

@@ -13,22 +13,22 @@ namespace Eaton.Mentoria.Domain.Entities
         public int MentoriaId { get; set; }
         
         [ForeignKey("UsuarioId")]
-        public UsuarioDomain Usuario { get; set; }
+        public virtual UsuarioDomain Usuario { get; set; }
         public int UsuarioId { get; set; }
         
         [ForeignKey("CategoriaId")]
-        public CategoriaDomain Categoria { get; set; }
+        public virtual CategoriaDomain Categoria { get; set; }
         public int CategoriaId { get; set; }
         public Boolean Ativa { get; set; }
         public Boolean Online { get; set; }
         public string Nome { get; set; }
         
         [ForeignKey("SedeId")]
-        public SedeDomain Sede { get; set; }
+        public virtual SedeDomain Sede { get; set; }
 
         public int SedeId { get; set; }
 
-        public ICollection<AplicacaoDomain> Aplicacoes { get; set; }
+        public virtual ICollection<AplicacaoDomain> Aplicacoes { get; set; }
     
 
     }

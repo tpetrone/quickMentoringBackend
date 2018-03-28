@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eaton.Mentoria.WebApi.Controllers
 {
+   
+  
    [Route("api/[controller]")]
     public class AplicacaoController : Controller
     {

@@ -10,7 +10,7 @@ namespace Eaton.Mentoria.Domain.Entities
         public int PerfilId{ get; set; }
         
         [ForeignKey("UsuarioId")]
-        public UsuarioDomain Usuario { get; set; }
+        public virtual UsuarioDomain Usuario { get; set; }
         public int UsuarioId { get; set; }
 
         [Required]
@@ -27,7 +27,7 @@ namespace Eaton.Mentoria.Domain.Entities
         public string Cep { get; set; }
         
         [ForeignKey("SedeId")]
-        public SedeDomain Sede { get; set; }
+        public virtual SedeDomain Sede { get; set; }
 
         public int SedeId { get; set; }
         

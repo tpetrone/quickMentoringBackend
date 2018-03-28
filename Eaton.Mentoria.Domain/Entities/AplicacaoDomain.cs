@@ -15,11 +15,11 @@ namespace Eaton.Mentoria.Domain.Entities
         public bool? Aceite { get; set; }
         
         [ForeignKey("MentoradoId")]
-        public UsuarioDomain Mentorado { get; set; }
+        public virtual UsuarioDomain Mentorado { get; set; }
         public int MentoradoId { get; set; }
         
         [ForeignKey("MentoriaId")]
-        public MentoriaDomain Mentoria { get; set; }
+        public virtual MentoriaDomain Mentoria { get; set; }
         public int MentoriaId { get; set; }
         
         [Required]

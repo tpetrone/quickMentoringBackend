@@ -16,6 +16,7 @@ using Eaton.Mentoria.Repository.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Eaton.Mentoria.WebApi.util;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Eaton.Mentoria.WebApi
 {
@@ -30,8 +31,15 @@ namespace Eaton.Mentoria.WebApi
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
+        {  
+            // Register the Swagger generator, defining one or more Swagger documents
+        services.AddSwaggerGen(c =>
         {
-           // services.AddMvc();
+            c.SwaggerDoc("v1", new Info { Title = "Minha Mentoria", Version = "v1" });
+        });      
+
+        
+
            services.AddDbContext<IMentoriaContext>(options =>
                         options.UseSqlServer(Configuration.GetConnectionString("SmarterAspConnection")));
 
@@ -40,6 +48,7 @@ namespace Eaton.Mentoria.WebApi
                 Options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             });
 
+            
                 /*
                 O método ConfigureServices da classe Startup também passará por ajustes:
                 Uma referência de TokenConfigurations será criada a partir do objeto vinculado à propriedade Configuration e do conteúdo definido na seção de mesmo nome no arquivo appsettings.json;
@@ -114,6 +123,15 @@ namespace Eaton.Mentoria.WebApi
             }
 
             app.UseCors("MyPolicy");
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Minha Mentoria V1");
+            });
 
             app.UseMvc();
         }

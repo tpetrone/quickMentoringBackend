@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
+
 namespace Eaton.Mentoria.WebApi.Controllers
 {
     
@@ -24,7 +25,19 @@ namespace Eaton.Mentoria.WebApi.Controllers
 
         [HttpGet]
         public IActionResult GetAction(){
-            return Ok(_mentoriaRepository.Listar(new string[]{"Categoria","Usuario","Usuario.Perfil", "Sede"}));
+            //new string[]{"Categoria","Usuario","Usuario.Perfil", "Sede"})
+            List<MentoriaDomain> lsMentoria = _mentoriaRepository.Listar(new string[]{"Categoria", "Sede", "Usuario", "Usuario.Perfil"}).ToList();
+
+            var retorno = lsMentoria.Select( x => new   {
+                    id = x.MentoriaId,
+                    nome = x.Nome,
+                    categoria = x.Categoria.Nome,
+                    sede = x.Sede.Nome,
+                    usuarioid = x.UsuarioId,
+                    usuario = x.Usuario.Perfil.Nome
+            }).ToArray();
+
+            return Ok(retorno);
         } 
 
         [HttpPost]

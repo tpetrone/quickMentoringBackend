@@ -12,11 +12,11 @@ namespace Eaton.Mentoria.Domain.Entities
         public decimal Nota { get; set; }
 
         [ForeignKey("UsuarioGanhouNotaId")]
-        public UsuarioDomain UsuarioGanhouNota { get; set; }
+        public virtual UsuarioDomain UsuarioGanhouNota { get; set; }
         public int UsuarioGanhouNotaId { get; set; }
         
         [ForeignKey("UsuarioDeuNotaId")] 
-        public UsuarioDomain UsuarioDeuNota { get; set; }
+        public virtual UsuarioDomain UsuarioDeuNota { get; set; }
         public int UsuarioDeuNotaId { get; set; }
     }
 }

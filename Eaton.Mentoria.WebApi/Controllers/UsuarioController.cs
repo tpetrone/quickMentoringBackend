@@ -13,6 +13,15 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Eaton.Mentoria.WebApi.Controllers
 {
+    
+    /// <summary>
+    /// O controller usuário é responsável por:
+    /// Cadastrar Usuários utilizando o verbo POST
+    /// listar todos usuários utilizando o verbo GET
+    /// Lista o usuário por Id
+    /// Deleta o usuário por Id
+    /// Atualiza o usuário por Id
+    /// </summary>
     [Route("api/[controller]")]
     public class UsuarioController : Controller
     {
@@ -23,12 +32,22 @@ namespace Eaton.Mentoria.WebApi.Controllers
             _usuarioRepository = usuarioRepository;
         }
 
+        
+        /// <summary>
+        /// Retorna os usuários no formato JSON
+        /// </summary>
+        /// <returns>Retorna todos os dados do usuário no formato JSON</returns>
         [HttpGet]
         public IActionResult GetAction(){
             return Ok(_usuarioRepository.Listar(new string[]{"Perfil"}));
 
         }
-
+        
+        /// <summary>
+        /// Cadastra o usuário recebendo os dados no BODY no formato JSON
+        /// </summary>
+        /// <param name="usuario">Recebe um objeto usuario</param>
+        /// <returns>Se cadastrado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
         [HttpPost]
         [Route("Cadastrar")]
         public IActionResult Cadastrar([FromBody] UsuarioDomain usuario)
@@ -108,8 +127,15 @@ namespace Eaton.Mentoria.WebApi.Controllers
             {
                 return BadRequest(e.Message);
             }
-        }
-            
+        }           
+        
+        
+        /// <summary>
+        /// Para atualizar o usuário é necessário passar o id do usuário que se deseja atualizar e os dados que serão atualizados do usuário no corpo (BODY) no formato JSON
+        /// </summary>
+        /// <param name="usuario">Novos dados que vão para o usuario</param>
+        /// <param name="id"></param>
+        /// <returns>Se atualizado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
         [HttpPut("{id}")]
         public IActionResult Atualizar([FromBody] UsuarioDomain usuario, int id)
         {
@@ -136,8 +162,13 @@ namespace Eaton.Mentoria.WebApi.Controllers
             {
                 return BadRequest(e.Message);
             }
-        }
-
+        }        
+        
+        /// <summary>
+        /// Deleta o usuário recebendo os dados no BODY no formato JSON
+        /// </summary>
+        /// <param name="id">id dO usuario que deve ser deletado</param>
+        /// <returns>Se deletado retorna ok(200) ou se não deletou retorna bad request(400)</returns>
         [HttpDelete("{id}")]
         public IActionResult Excluir(int id)
         {
