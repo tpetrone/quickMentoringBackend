@@ -13,7 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Eaton.Mentoria.WebApi.Controllers
 {
-    
+
     /// <summary>
     /// O controller usuário é responsável por:
     /// Cadastrar Usuários utilizando o verbo POST
@@ -26,23 +26,24 @@ namespace Eaton.Mentoria.WebApi.Controllers
     public class UsuarioController : Controller
     {
         private IUsuarioRepository _usuarioRepository;
-
-        public UsuarioController(IUsuarioRepository usuarioRepository)
+        private IPerfilRepository perfilRepository;
+        public UsuarioController(IUsuarioRepository usuarioRepository, IPerfilRepository perfilRepository)
         {
             _usuarioRepository = usuarioRepository;
+            this.perfilRepository = perfilRepository;
         }
 
-        
+
         /// <summary>
         /// Retorna os usuários no formato JSON
         /// </summary>
         /// <returns>Retorna todos os dados do usuário no formato JSON</returns>
         [HttpGet]
-        public IActionResult GetAction(){
-            return Ok(_usuarioRepository.Listar(new string[]{"Perfil"}));
+        public IActionResult GetAction() {
+            return Ok(_usuarioRepository.Listar(new string[] { "Perfil" }));
 
         }
-        
+
         /// <summary>
         /// Cadastra o usuário recebendo os dados no BODY no formato JSON
         /// </summary>
@@ -56,7 +57,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
                 if (ModelState.IsValid)
                 {
                     UsuarioDomain retornoUsuario = _usuarioRepository.BuscarPorEmail(usuario.Email);
-                    if(retornoUsuario != null)
+                    if (retornoUsuario != null)
                     {
                         return BadRequest("Email já cadastrado");
                     }
@@ -65,9 +66,9 @@ namespace Eaton.Mentoria.WebApi.Controllers
                 }
 
                 var errors = ModelState.Select(x => x.Value.Errors)
-                           .Where(y=>y.Count>0)
+                           .Where(y => y.Count > 0)
                            .ToList();
-                           
+
                 return BadRequest(errors);
             }
             catch (System.Exception e)
@@ -84,9 +85,9 @@ namespace Eaton.Mentoria.WebApi.Controllers
         {
             try
             {
-                
+
                 UsuarioDomain retornoUsuario = _usuarioRepository.UsuarioExiste(usuario.Email, usuario.Password);
-                if(retornoUsuario != null)
+                if (retornoUsuario != null)
                 {
                     ClaimsIdentity identity = new ClaimsIdentity(
                     new GenericIdentity(retornoUsuario.UsuarioId.ToString(), "Login"),
@@ -96,7 +97,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
                         new Claim("Id", retornoUsuario.UsuarioId.ToString()),
                         new Claim("Nome", retornoUsuario.Perfil.Nome),
                     });
-               
+
                     identity.AddClaim(new Claim(ClaimTypes.Role, retornoUsuario.Role));
 
                     var handler = new JwtSecurityTokenHandler();
@@ -119,16 +120,16 @@ namespace Eaton.Mentoria.WebApi.Controllers
 
                     return Ok(retorno);
                 }
-                    
+
                 return NotFound("Email ou senha inválido!");
             }
             catch (System.Exception e)
             {
                 return BadRequest(e.Message);
             }
-        }           
-        
-        
+        }
+
+
         /// <summary>
         /// Para atualizar o usuário é necessário passar o id do usuário que se deseja atualizar e os dados que serão atualizados do usuário no corpo (BODY) no formato JSON
         /// </summary>
@@ -143,14 +144,14 @@ namespace Eaton.Mentoria.WebApi.Controllers
                 if (!ModelState.IsValid)
                 {
                     var errors = ModelState.Select(x => x.Value.Errors)
-                           .Where(y=>y.Count>0)
+                           .Where(y => y.Count > 0)
                            .ToList();
-                           
+
                     return BadRequest(errors);
                 }
 
-                if(_usuarioRepository.BuscarPorId(id) != null){
-                        return NotFound("Usuário nâo encontrado.");
+                if (_usuarioRepository.BuscarPorId(id) != null) {
+                    return NotFound("Usuário nâo encontrado.");
                 }
 
                 usuario.UsuarioId = id;
@@ -161,8 +162,8 @@ namespace Eaton.Mentoria.WebApi.Controllers
             {
                 return BadRequest(e.Message);
             }
-        }        
-        
+        }
+
         /// <summary>
         /// Deleta o usuário recebendo os dados no BODY no formato JSON
         /// </summary>
@@ -177,7 +178,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
                 var usuario = _usuarioRepository.BuscarPorId(id);
 
                 //Verifica se encontrou o usuário para o id passado, caso na encontre retorna NotFound
-                if(usuario == null)
+                if (usuario == null)
                     return NotFound();
 
                 //Caso tenha encontrado o usuario exclui
@@ -188,7 +189,41 @@ namespace Eaton.Mentoria.WebApi.Controllers
             {
                 return BadRequest(e.Message);
             }
-        }  
-        
+        }
+
+        [HttpPut("{id}/perfil")]
+        public IActionResult AtualizarPerfil([FromBody] PerfilDomain perfil, [FromRoute] int id)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    var errors = ModelState.Select(x => x.Value.Errors)
+                           .Where(y => y.Count > 0)
+                           .ToList();
+
+                    return BadRequest(errors);
+                }
+
+                if (perfilRepository.BuscarPorId(id) != null)
+                {
+                    return NotFound("Usuário nâo encontrado.");
+                }
+
+                perfil.PerfilId = id;
+                perfilRepository.Atualizar(perfil);
+                return Ok(id);
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetPerfil([FromRoute] int id)
+        {
+            return Ok(perfilRepository.Listar(new string[] { "Perfil" }).Where(perfil => perfil.UsuarioId == id));
+        }
     }
 }
