@@ -25,20 +25,30 @@ namespace Eaton.Mentoria.WebApi.Controllers
 
         [HttpGet]
         public IActionResult GetAction(){
-            //new string[]{"Categoria","Usuario","Usuario.Perfil", "Sede"})
-            List<MentoriaDomain> lsMentoria = _mentoriaRepository.Listar(new string[]{"Categoria", "Sede", "Usuario", "Usuario.Perfil"}).ToList();
 
-            var retorno = lsMentoria.Select( x => new   {
-                    id = x.MentoriaId,
-                    nome = x.Nome,
-                    categoria = x.Categoria.Nome,
-                    sede = x.Sede.Nome,
-                    usuarioid = x.UsuarioId,
-                    usuario = x.Usuario.Perfil.Nome
-            }).ToArray();
+            IEnumerable<MentoriaDomain> lsMentoria = _mentoriaRepository.Listar(new string[] { "Categoria", "Sede", "Usuario", "Usuario.Perfil" });
 
-            return Ok(retorno);
-        } 
+            var resultado = lsMentoria.Select(x => new
+            {
+                id = x.MentoriaId,
+                nome = x.Nome,
+                categoria = new
+                {
+                    nome = x.Categoria.Nome,
+                    id = x.Categoria.CategoriaId
+                },
+                sede = new
+                {
+                    nome = x.Sede.Nome,
+                    id = x.Sede.SedeId,
+                },
+                usuarioid = x.Usuario.UsuarioId,
+                usuarionome = x.Usuario.Perfil is null ? "" : x.Usuario.Perfil.Nome
+            });
+
+            return Ok(resultado);
+        }
+      
 
         [HttpPost]
         [Authorize("Bearer", Roles="Mentor")]
