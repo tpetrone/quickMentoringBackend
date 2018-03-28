@@ -35,17 +35,6 @@ namespace Eaton.Mentoria.WebApi.Controllers
                 return NotFound();
         } 
 
-        [HttpGet("mentorado/{id}")]
-        [Authorize("Bearer")]
-        [Route("mentorado")]
-        public IActionResult GetAplicacaoMentorado(int id){
-            List<AplicacaoDomain> aplicacoes = _aplicacaoRepository.Listar(new string[]{"Mentorado", "Mentorado.Perfil","Mentoria"}).Where(x => x.MentoradoId == id).ToList();
-            if(aplicacoes != null)
-                return Ok(aplicacoes);
-            else
-                return NotFound();
-        } 
-
         [HttpPost]       
         [Authorize("Bearer")] 
         public IActionResult Cadastrar([FromBody] AplicacaoDomain aplicacao)

@@ -49,7 +49,6 @@ namespace Eaton.Mentoria.WebApi.Controllers
         /// <param name="usuario">Recebe um objeto usuario</param>
         /// <returns>Se cadastrado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
         [HttpPost]
-        [Route("Cadastrar")]
         public IActionResult Cadastrar([FromBody] UsuarioDomain usuario)
         {
             try
