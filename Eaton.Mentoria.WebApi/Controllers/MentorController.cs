@@ -8,6 +8,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eaton.Mentoria.WebApi.Controllers
 {
+    
+    /// <summary>
+    /// O controller Mentor é responsável por:
+    /// Cadastrar Mentor utilizando o verbo POST
+    /// listar todos mentories utilizando o verbo GET
+    /// Lista o Mentor por Id
+    /// Deleta o Mentor por Id
+    /// Atualiza o Mentor por Id
+    /// </summary>
     [Route("api/[controller]")]
     public class MentorController : Controller
     {
@@ -18,6 +27,12 @@ namespace Eaton.Mentoria.WebApi.Controllers
             this.mentoriaReprository = mentoriaRepository;
         }
 
+        
+        /// <summary>
+        /// Retorna os Mentores no formato JSON
+        /// </summary>
+        /// <param name="id">Recebe o Id do Mentor</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("{id}/mentorias")]
         public IActionResult GetMentorias([FromRoute]int id)

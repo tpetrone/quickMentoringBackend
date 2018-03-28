@@ -7,6 +7,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eaton.Mentoria.WebApi.Controllers
 {
+    
+    /// <summary>
+    /// O controller Categoria é responsável por:
+    /// Cadastrar Categoria utilizando o verbo POST
+    /// listar todas CAtegorias utilizando o verbo GET
+    /// Lista a Categoria por Id
+    /// Deleta a CAtegoria por Id
+    /// Atualiza a Categoria por Id
+    /// </summary>
     [Route("api/[controller]")]
     public class CategoriaController : Controller
     {
@@ -18,6 +27,11 @@ namespace Eaton.Mentoria.WebApi.Controllers
             _categoriaRepository = categoriaRepository;
         }
 
+        
+        /// <summary>
+        /// Retorna as CAtegorias no formato JSON
+        /// </summary>
+        /// <returns>Retorna todas as categorias no formato JSON</returns>
         [HttpGet]
         public IActionResult GetAction(){
             return Ok(_categoriaRepository.Listar());

@@ -8,6 +8,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eaton.Mentoria.WebApi.Controllers
 {
+     
+    /// <summary>
+    /// O controller Perfil é responsável por:
+    /// Cadastrar Perfis utilizando o verbo POST
+    /// listar todos Perfis utilizando o verbo GET
+    /// Lista o Perfil por Id
+    /// Deleta o Perfil por Id
+    /// Atualiza o Perfil por Id
+    /// </summary>
+     
      [Route("api/[controller]")]
     public class PerfilController : Controller
     {
@@ -18,12 +28,22 @@ namespace Eaton.Mentoria.WebApi.Controllers
             _perfilRepository = perfilRepository;
         }
 
+       
+       /// <summary>
+       /// Retorna os perfis no formato JSON
+       /// </summary>
+       /// <returns>Retorna todos os dados do perfil no formato JSON</returns>        
         [HttpGet]
         public IActionResult GetAction(){
             return Ok(_perfilRepository.Listar(new string[]{"Perfil"}));
 
         }
 
+        /// <summary>
+        /// Recebe dados da Perfil e cadastra no banco
+        /// </summary>
+        /// <param name="perfil">dado do perfil a ser cadastrado</param>
+        /// <returns>Retorna se a operação deu certo ou não</returns>
         [HttpPost]
         public IActionResult Cadastrar([FromBody] PerfilDomain perfil)
         {
@@ -50,7 +70,14 @@ namespace Eaton.Mentoria.WebApi.Controllers
             }
         }
             
-            [HttpPut("{id}")]
+        
+        /// <summary>
+        /// Para atualizar o perfil é necessário passar o id do perfil que se deseja atualizar e os dados que serão atualizados do perfil no corpo (BODY) no formato JSON
+        /// </summary>
+        /// <param name="perfil">Novos dados que vão para o perfil</param>
+        /// <param name="id"></param>
+        /// <returns>Se atualizado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
+        [HttpPut("{id}")]
         public IActionResult Atualizar([FromBody] PerfilDomain perfil, int id)
         {
             try
@@ -78,6 +105,13 @@ namespace Eaton.Mentoria.WebApi.Controllers
             }
         }
 
+        
+        
+        /// <summary>
+        ///  Para deletar o perfil é necessário passar o id do perfil que se deseja atualizar e os dados que serão atualizados do perfil no corpo (BODY) no formato JSON
+        /// </summary>
+        /// <param name="id">Id do perfil a ser apagado</param>
+        /// <returns>Se atualizado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
         [HttpDelete("{id}")]
         public IActionResult Excluir(int id)
         {

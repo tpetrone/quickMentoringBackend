@@ -12,6 +12,15 @@ using Microsoft.AspNetCore.Mvc;
 namespace Eaton.Mentoria.WebApi.Controllers
 {
 
+    
+    /// <summary>
+    /// O controller Mentoria é responsável por:
+    /// Cadastrar Mentoria utilizando o verbo POST
+    /// listar todas mentorias utilizando o verbo GET
+    /// Lista a Mentoria por Id
+    /// Deleta a Mentoria por Id
+    /// Atualiza a Mentoria por Id
+    /// </summary>
     [Route("api/[controller]")]
     public class MentoriaController : Controller
     {
@@ -26,6 +35,12 @@ namespace Eaton.Mentoria.WebApi.Controllers
             this.aplicacaoRepository = aplicacaoRepository;
         }
 
+        
+        /// <summary>
+        /// Retorna as mentorias no formato JSON
+        /// </summary>
+        /// <param name="id">Recebe o Id da Mentoria</param>
+        /// <returns>returns>Retorna todos os dados do perfil no formato JSON</returns>
         [HttpGet]
         [Route("{id}/aplicacoes")]
         public IActionResult GetAplicacoes([FromRoute]int id)
@@ -64,6 +79,12 @@ namespace Eaton.Mentoria.WebApi.Controllers
         }
 
 
+        /// <summary>
+        /// Recebe dados da mentoria e cadastra no banco
+        /// </summary>
+        /// <param name="mentoria">dado da mentoria a ser cadastrado</param>
+        /// <returns>Retorna se a operação deu certo ou não</returns>              
+        
         [HttpPost]
         [Authorize("Bearer", Roles = "Mentor")]
         public IActionResult Cadastrar([FromBody] MentoriaDomain mentoria)
@@ -94,6 +115,12 @@ namespace Eaton.Mentoria.WebApi.Controllers
         }
 
 
+        /// <summary>
+        /// Atualiza dados da mentoria no banco
+        /// </summary>
+        /// <param name="mentoria">dado da mentoria a ser atualizado</param>
+        /// <param name="id">id da mentoria a ser atualizado</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public IActionResult Atualizar([FromBody] MentoriaDomain mentoria, int id)
         {
@@ -119,6 +146,11 @@ namespace Eaton.Mentoria.WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta a Mentoria recebendo os dados no BODY no formato JSON
+        /// </summary>
+        /// <param name="id">Id do usuario que deve ser deletado</param>
+        /// <returns>Se deletado retorna ok(200) ou se não deletou retorna bad request(400)</returns>
         [HttpDelete("{id}")]
         public IActionResult Excluir(int id)
         {
