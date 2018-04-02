@@ -9,6 +9,14 @@ namespace Eaton.Mentoria.WebApi.Controllers
 {
    
   
+    /// <summary>
+    /// O controller aplicação é responsável por:
+    /// Cadastrar aplicação utilizando o verbo POST
+    /// listar todas aplicações utilizando o verbo GET
+    /// Lista a aplicação por Id
+    /// Deleta a aplicação por Id
+    /// Atualiza a aplicação por Id
+   /// </summary>
    [Route("api/[controller]")]
     public class AplicacaoController : Controller
     {
