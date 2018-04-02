@@ -39,7 +39,8 @@ namespace Eaton.Mentoria.WebApi.Controllers
         /// </summary>
         /// <returns>Retorna todos os dados do usuário no formato JSON</returns>
         [HttpGet]
-        public IActionResult GetAction() {
+        public IActionResult GetAction()
+        {
             return Ok(_usuarioRepository.Listar(new string[] { "Perfil" }));
 
         }
@@ -150,7 +151,8 @@ namespace Eaton.Mentoria.WebApi.Controllers
                     return BadRequest(errors);
                 }
 
-                if (_usuarioRepository.BuscarPorId(id) != null) {
+                if (_usuarioRepository.BuscarPorId(id) != null)
+                {
                     return NotFound("Usuário nâo encontrado.");
                 }
 

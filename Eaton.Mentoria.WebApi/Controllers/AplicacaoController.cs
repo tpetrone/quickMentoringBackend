@@ -7,17 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eaton.Mentoria.WebApi.Controllers
 {
-   
-  
-    /// <summary>
-    /// O controller aplicação é responsável por:
-    /// Cadastrar aplicação utilizando o verbo POST
-    /// listar todas aplicações utilizando o verbo GET
-    /// Lista a aplicação por Id
-    /// Deleta a aplicação por Id
-    /// Atualiza a aplicação por Id
-   /// </summary>
-   [Route("api/[controller]")]
+ 
+    [Route("api/[controller]")]
     public class AplicacaoController : Controller
     {
         private IAplicacaoRepository _aplicacaoRepository;
@@ -29,41 +20,43 @@ namespace Eaton.Mentoria.WebApi.Controllers
 
         [HttpGet]
         [Authorize("Bearer")]
-        public IActionResult GetAction(){
+        public IActionResult GetAction()
+        {
             return Ok(_aplicacaoRepository.Listar());
-        }  
-        
+        }
+
         [HttpGet("{id}")]
         [Authorize("Bearer")]
-        public IActionResult GetAction(int id){
+        public IActionResult GetAction(int id)
+        {
             var aplicacao = _aplicacaoRepository.BuscarPorId(id);
-            if(aplicacao != null)
+            if (aplicacao != null)
                 return Ok(aplicacao);
             else
                 return NotFound();
-        } 
+        }
 
-        [HttpPost]       
-        [Authorize("Bearer")] 
+        [HttpPost]
+        [Authorize("Bearer")]
         public IActionResult Cadastrar([FromBody] AplicacaoDomain aplicacao)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                   if(_aplicacaoRepository.AplicacaoExiste(aplicacao.MentoradoId,aplicacao.MentoriaId))
+                    if (_aplicacaoRepository.AplicacaoExiste(aplicacao.MentoradoId, aplicacao.MentoriaId))
                     {
                         return BadRequest("Solicitação para mentoria já efetuada!");
                     }
 
                     _aplicacaoRepository.Inserir(aplicacao);
                     return Ok(aplicacao);
-                }                
+                }
 
                 var errors = ModelState.Select(x => x.Value.Errors)
-                           .Where(y=>y.Count>0)
+                           .Where(y => y.Count > 0)
                            .ToList();
-                           
+
                 return BadRequest(errors);
             }
             catch (System.Exception e)
@@ -79,14 +72,14 @@ namespace Eaton.Mentoria.WebApi.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                     aplicacao.AplicacaoId = id;
+                    aplicacao.AplicacaoId = id;
                     _aplicacaoRepository.Atualizar(aplicacao);
-                    
+
                 }
                 var errors = ModelState.Select(x => x.Value.Errors)
-                           .Where(y=>y.Count>0)
+                           .Where(y => y.Count > 0)
                            .ToList();
-                           
+
                 return BadRequest(errors);
             }
             catch (System.Exception e)
