@@ -108,6 +108,7 @@ namespace Eaton.Mentoria.WebApi
 
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped(typeof(ICategoriaRepository), typeof(CategoriaRepository));
+            services.AddScoped(typeof(IPerfilRepository), typeof(PerfilRepository));
             services.AddScoped(typeof(ISedeRepository), typeof(SedeRepository));
             services.AddScoped(typeof(IMentoriaRepository), typeof(MentoriaRepository));
             services.AddScoped(typeof(IUsuarioRepository), typeof(UsuarioRepository));
