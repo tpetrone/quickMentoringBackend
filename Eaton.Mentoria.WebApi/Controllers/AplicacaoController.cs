@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eaton.Mentoria.WebApi.Controllers
 {
- 
+
     /// <summary>
     /// O controller Aplicação é responsável por:
     /// Cadastrar Aplicações utilizando o verbo POST
@@ -46,8 +46,8 @@ namespace Eaton.Mentoria.WebApi.Controllers
                 return Ok(aplicacao);
             else
                 return NotFound();
-        }      
-        
+        }
+
         /// <summary>
         /// Cadastra a aplicação recebendo os dados no BODY no formato JSON
         /// </summary>
@@ -84,7 +84,10 @@ namespace Eaton.Mentoria.WebApi.Controllers
                            .Where(y => y.Count > 0)
                            .ToList();
 
-                return BadRequest(errors);
+                if (errors.Any())
+                    return BadRequest(errors);
+                else
+                    return Ok(aplicacao);
             }
             catch (System.Exception e)
             {
@@ -115,13 +118,16 @@ namespace Eaton.Mentoria.WebApi.Controllers
                            .Where(y => y.Count > 0)
                            .ToList();
 
-                return BadRequest(errors);
+
+                if (errors.Any())
+                    return BadRequest(errors);
+                else
+                    return Ok(aplicacao);
             }
             catch (System.Exception e)
             {
                 return BadRequest(e.Message);
             }
         }
-
     }
 }

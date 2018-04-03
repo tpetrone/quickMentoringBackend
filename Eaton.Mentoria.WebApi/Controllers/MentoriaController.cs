@@ -112,7 +112,10 @@ namespace Eaton.Mentoria.WebApi.Controllers
                            .Where(y => y.Count > 0)
                            .ToList();
 
-                return BadRequest(errors);
+                if (errors.Any())
+                    return BadRequest(errors);
+                else
+                    return Ok(mentoria);
             }
             catch (System.Exception e)
             {

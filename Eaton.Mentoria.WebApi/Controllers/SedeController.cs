@@ -73,7 +73,10 @@ namespace Eaton.Sede.WebApi.Controllers
                            .Where(y => y.Count > 0)
                            .ToList();
 
-                return BadRequest(errors);
+                if (errors.Any())
+                    return BadRequest(errors);
+                else
+                    return Ok(sede);
             }
             catch (System.Exception e)
             {
@@ -109,7 +112,10 @@ namespace Eaton.Sede.WebApi.Controllers
                            .Where(y => y.Count > 0)
                            .ToList();
 
-                return BadRequest(errors);
+                if (errors.Any())
+                    return BadRequest(errors);
+                else
+                    return Ok(sede);
             }
             catch (System.Exception e)
             {
