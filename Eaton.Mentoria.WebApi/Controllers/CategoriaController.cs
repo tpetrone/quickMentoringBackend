@@ -6,7 +6,15 @@ using Eaton.Mentoria.Repository.Context;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eaton.Mentoria.WebApi.Controllers
-{
+{   
+   
+     /// <summary>
+     /// O controller categoria é responsável por:
+     /// Cadastrar Categoria utilizando o verbo POST
+     /// listar todas categorias utilizando o verbo GET
+     /// Lista a categoria  por Id
+     /// Atualiza a categoria por Id     
+     /// </summary>
     [Route("api/[controller]")]
     public class CategoriaController : Controller
     {
@@ -17,7 +25,11 @@ namespace Eaton.Mentoria.WebApi.Controllers
         {
             _categoriaRepository = categoriaRepository;
         }
-
+        
+         /// <summary>
+         /// Reltorna todas AS categoria no formato JSON
+         /// </summary>
+         /// <returns>Retorna todos os dados do usuário no formato JSON</returns>
         [HttpGet]
         public IActionResult GetAction()
         {
@@ -32,9 +44,13 @@ namespace Eaton.Mentoria.WebApi.Controllers
                 return Ok(categoria);
             else
                 return NotFound();
-        }
-
-
+        }       
+      
+        /// <summary>
+        /// Cadastra a categoria recebendo os dados no BODY no formato JSON
+        /// </summary>
+        /// <param name="categoria">Recebe um objeto Categoria</param>
+        /// <returns>Se cadastrado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
         [HttpPost]
         public IActionResult Cadastrar([FromBody] CategoriaDomain categoria)
         {
@@ -61,8 +77,15 @@ namespace Eaton.Mentoria.WebApi.Controllers
             {
                 return BadRequest(e.Message);
             }
-        }
+        }       
 
+        /// <summary>
+        /// Para atualizar a categoria é necessário passar o id da categora que se deseja atualizar e os dados que serão atualizados da categoria no corpo (BODY) no formato JSON
+        /// </summary>
+        /// <param name="categoria"></param>
+        /// <param name="id">id da categoria a se atualizado</param>Categoria a ser atualizada
+        /// <returns>Se atualizado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
+         
         [HttpPut("{id}")]
         public IActionResult Atualizar([FromBody] CategoriaDomain categoria, int id)
         {
@@ -85,9 +108,5 @@ namespace Eaton.Mentoria.WebApi.Controllers
                 return BadRequest(e.Message);
             }
         }
-
-
-
-
     }
 }

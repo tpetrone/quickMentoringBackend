@@ -11,14 +11,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eaton.Mentoria.WebApi.Controllers
 {
-
+    /// <summary>
+    /// O controller mentoria é responsável por:
+    /// Cadastrar Mentorias utilizando o verbo POST
+    /// listar todas mentorias utilizando o verbo GET
+    /// Lista a mentoria por Id
+    /// Deleta a mentoria por Id
+    /// Atualiza a mentoria por Id 
+    /// </summary>
+    
     [Route("api/[controller]")]
     public class MentoriaController : Controller
     {
         private IMentoriaRepository _mentoriaRepository;
         private IAplicacaoRepository aplicacaoRepository;
-
-
 
         public MentoriaController(IMentoriaRepository mentoriaRepository, IAplicacaoRepository aplicacaoRepository)
         {

@@ -8,6 +8,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eaton.Mentoria.WebApi.Controllers
 {
+   /// <summary>
+    /// O controller Mentorado é responsável por:
+    /// Cadastrar Mentorados utilizando o verbo POST
+    /// listar todos mentorados utilizando o verbo GET
+    /// Lista o mentorado por Id
+    /// Deleta o mentorado por Id
+    /// Atualiza o mentorado por Id
+    /// </summary>
+
     [Route("api/[controller]")]
     public class MentoradoController : Controller
     {

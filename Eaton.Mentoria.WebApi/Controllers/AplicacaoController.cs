@@ -8,6 +8,14 @@ using Microsoft.AspNetCore.Mvc;
 namespace Eaton.Mentoria.WebApi.Controllers
 {
  
+    /// <summary>
+    /// O controller Aplicação é responsável por:
+    /// Cadastrar Aplicações utilizando o verbo POST
+    /// listar todas aplicações utilizando o verbo GET
+    /// Lista a aplicação por Id
+    /// Deleta a aplicação por Id
+    /// Atualiza a aplicação por Id 
+    /// </summary>
     [Route("api/[controller]")]
     public class AplicacaoController : Controller
     {
@@ -18,6 +26,10 @@ namespace Eaton.Mentoria.WebApi.Controllers
             _aplicacaoRepository = aplicacaoRepository;
         }
 
+        /// <summary>
+        /// Retorna a aplicação no formato JSON
+        /// </summary>
+        /// <returns>Retorna todaos os dados da aplicação no formato JSON</returns>
         [HttpGet]
         [Authorize("Bearer")]
         public IActionResult GetAction()
@@ -34,8 +46,14 @@ namespace Eaton.Mentoria.WebApi.Controllers
                 return Ok(aplicacao);
             else
                 return NotFound();
-        }
-
+        }       
+     
+        
+        /// <summary>
+        /// Cadastra a aplicação recebendo os dados no BODY no formato JSON
+        /// </summary>
+        /// <param name="aplicacao">Recebe um objeto aplicação</param>
+        /// <returns>Se cadastrado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
         [HttpPost]
         [Authorize("Bearer")]
         public IActionResult Cadastrar([FromBody] AplicacaoDomain aplicacao)
@@ -65,6 +83,12 @@ namespace Eaton.Mentoria.WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Para atualizar a aplicação é necessário passar o id da aplicação que se deseja atualizar e os dados que serão atualizados da aplicação no corpo (BODY) no formato JSON
+        /// </summary>
+        /// <param name="aplicacao">Novos dados que vão para a aplicação</param>
+        /// <param name="id">Se atualizado retorna ok(200) ou se não cadastrou retorna bad request(400</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public IActionResult Atualizar([FromBody] AplicacaoDomain aplicacao, int id)
         {
