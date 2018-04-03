@@ -58,9 +58,9 @@
         </member>
         <member name="M:Eaton.Mentoria.WebApi.Controllers.CategoriaController.GetAction">
             <summary>
-            Reltorna todas AS categoria no formato JSON
+            Retorna todas as categorias no formato JSON
             </summary>
-            <returns>Retorna todos os dados do usuário no formato JSON</returns>
+            <returns>Retorna todos os dados da categoria no formato JSON</returns>
         </member>
         <member name="M:Eaton.Mentoria.WebApi.Controllers.CategoriaController.Cadastrar(Eaton.Mentoria.Domain.Entities.CategoriaDomain)">
             <summary>
@@ -71,7 +71,7 @@
         </member>
         <member name="M:Eaton.Mentoria.WebApi.Controllers.CategoriaController.Atualizar(Eaton.Mentoria.Domain.Entities.CategoriaDomain,System.Int32)">
             <summary>
-            Para atualizar a categoria é necessário passar o id da categora que se deseja atualizar e os dados que serão atualizados da categoria no corpo (BODY) no formato JSON
+            Para atualizar a categoria é necessário passar o id da categoria que se deseja atualizar e os dados que serão atualizados da categoria no corpo (BODY) no formato JSON
             </summary>
             <param name="categoria"></param>
             <param name="id">id da categoria a se atualizado</param>Categoria a ser atualizada
@@ -108,7 +108,7 @@
         </member>
         <member name="M:Eaton.Mentoria.WebApi.Controllers.MentorController.GetMentorias(System.Int32)">
             <summary>
-            Retorna os usuários no formato JSON
+            Retorna os mentores no formato JSON
             </summary>
             <param name="id">Retorna o Id da mentor</param>
             <returns>Retorna todos os dados do mentor no formato JSON</returns>
@@ -122,6 +122,19 @@
             Deleta a mentoria por Id
             Atualiza a mentoria por Id 
             </summary>
+        </member>
+        <member name="M:Eaton.Mentoria.WebApi.Controllers.MentoriaController.GetAplicacoes(System.Int32)">
+            <summary>
+            Retorna as mentorias no formato JSON
+            </summary>
+            <param name="id">Id da Mentoria</param>
+            <returns>Retorna todas as mentorias no formato JSON</returns>
+        </member>
+        <member name="M:Eaton.Mentoria.WebApi.Controllers.MentoriaController.GetAction">
+            <summary>
+            Retorna as mentorias no formato JSON
+            </summary>
+            <returns>Retorna todas as mentorias no formato JSON</returns>
         </member>
         <member name="M:Eaton.Mentoria.WebApi.Controllers.MentoriaController.Cadastrar(Eaton.Mentoria.Domain.Entities.MentoriaDomain)">
              <summary>
@@ -207,6 +220,23 @@
             </summary>
             <param name="id">id dO usuario que deve ser deletado</param>
             <returns>Se deletado retorna ok(200) ou se não deletou retorna bad request(400)</returns>
+        </member>
+        <member name="M:Eaton.Mentoria.WebApi.Controllers.UsuarioController.AtualizarPerfil(Eaton.Mentoria.Domain.Entities.PerfilDomain,System.Int32)">
+            <summary>
+            Para atualizar o usuário é necessário passar o id do usuário que se deseja atualizar e os dados que serão atualizados do usuário no corpo (BODY) no formato JSON
+            </summary>
+            <param name="perfil">Novos dados que vão para o perfil</param>
+            <param name="id"></param>
+            <response code="200">Retorna um int com o id do perfil</response>
+            <response code="404">Retorna uma string</response>
+            <response code="400">Retorna uma lista de erros</response>       
+        </member>
+        <member name="M:Eaton.Mentoria.WebApi.Controllers.UsuarioController.GetPerfil(System.Int32)">
+            <summary>
+            Retorna os usuários no formato JSON
+            </summary>
+            <param name="id"></param>
+            <returns>Retorna todos os dados do usuário no formato JSON</returns>
         </member>
         <member name="T:Eaton.Sede.WebApi.Controllers.SedeController">
             <summary>

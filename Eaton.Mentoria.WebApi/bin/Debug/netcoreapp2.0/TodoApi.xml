@@ -58,9 +58,9 @@
         </member>
         <member name="M:Eaton.Mentoria.WebApi.Controllers.CategoriaController.GetAction">
             <summary>
-            Retorna todas as categoria no formato JSON
+            Retorna todas as categorias no formato JSON
             </summary>
-            <returns>Retorna todos os dados do usuário no formato JSON</returns>
+            <returns>Retorna todos os dados da categoria no formato JSON</returns>
         </member>
         <member name="M:Eaton.Mentoria.WebApi.Controllers.CategoriaController.Cadastrar(Eaton.Mentoria.Domain.Entities.CategoriaDomain)">
             <summary>
