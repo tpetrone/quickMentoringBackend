@@ -33,10 +33,24 @@ namespace Eaton.Mentoria.WebApi
         public void ConfigureServices(IServiceCollection services)
         {  
             // Register the Swagger generator, defining one or more Swagger documents
-        services.AddSwaggerGen(c =>
-        {
-            c.SwaggerDoc("v1", new Info { Title = "Minha Mentoria", Version = "v1" });
-        });      
+       // Register the Swagger generator, defining one or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                    Version = "v1",
+                    Title = "ToDo API",
+                    Description = "A simple example ASP.NET Core Web API",
+                    TermsOfService = "None",
+                    Contact = new Contact { Name = "Shayne Boyer", Email = "", Url = "https://twitter.com/spboyer" },
+                    License = new License { Name = "Use under LICX", Url = "https://example.com/license" }
+                });
+
+                // Set the comments path for the Swagger JSON and UI.
+                var basePath = AppContext.BaseDirectory;
+                var xmlPath = System.IO.Path.Combine(basePath, "TodoApi.xml"); 
+                c.IncludeXmlComments(xmlPath);
+            });     
 
         
 
@@ -131,7 +145,7 @@ namespace Eaton.Mentoria.WebApi
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Minha Mentoria V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
             app.UseMvc();

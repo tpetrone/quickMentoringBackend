@@ -40,3 +40,4 @@ C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\obj\De
 C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\obj\Debug\netcoreapp2.0\Eaton.Mentoria.WebApi.AssemblyInfo.cs
 C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\obj\Debug\netcoreapp2.0\Eaton.Mentoria.WebApi.dll
 C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\obj\Debug\netcoreapp2.0\Eaton.Mentoria.WebApi.pdb
+C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.WebApi\bin\Debug\netcoreapp2.0\TodoApi.xml

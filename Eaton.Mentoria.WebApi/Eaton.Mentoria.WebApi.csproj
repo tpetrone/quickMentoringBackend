@@ -17,10 +17,15 @@
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
   </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Eaton.Mentoria.Domain\Eaton.Mentoria.Domain.csproj" />
     <ProjectReference Include="..\Eaton.Mentoria.Repository\Eaton.Mentoria.Repository.csproj" />
-
   </ItemGroup>
+
+  <!-- <snippet_SuppressWarnings> -->
+<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <DocumentationFile>bin\Debug\netcoreapp2.0\TodoApi.xml</DocumentationFile>
+  </PropertyGroup>
 
 </Project>

@@ -9,6 +9,7 @@ using Eaton.Mentoria.Domain.Entities;
 using Eaton.Mentoria.Repository.Context;
 using Eaton.Mentoria.WebApi.util;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Eaton.Mentoria.WebApi.Controllers
@@ -78,6 +79,22 @@ namespace Eaton.Mentoria.WebApi.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Efetua o Login do usuário
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /api/usuario/login
+        ///     {
+        ///        "email": "email@email.com",
+        ///        "senha": "123456"
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="usuario">Email e senha do usuário</param>
+        /// <returns></returns>
         [HttpPost]
         [Route("Login")]
         public IActionResult Login([FromBody]UsuarioDomain usuario,
@@ -136,8 +153,13 @@ namespace Eaton.Mentoria.WebApi.Controllers
         /// </summary>
         /// <param name="usuario">Novos dados que vão para o usuario</param>
         /// <param name="id"></param>
-        /// <returns>Se atualizado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
+        /// <response code="200">Retorna um int com o id do usuário</response>
+        /// <response code="404">Retorna uma string</response>
+        /// <response code="400">Retorna uma lista de erros</response>  
         [HttpPut("{id}")]
+        [ProducesResponseType(typeof(int), 200)]
+        [ProducesResponseType(typeof(string), 404)]
+        [ProducesResponseType(typeof(List<ModelError>), 400)]
         public IActionResult Atualizar([FromBody] UsuarioDomain usuario, int id)
         {
             try

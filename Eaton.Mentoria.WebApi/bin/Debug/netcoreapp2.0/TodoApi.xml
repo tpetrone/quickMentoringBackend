@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Eaton.Mentoria.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:Eaton.Mentoria.WebApi.Controllers.AplicacaoController">
+            <summary>
+            O controller Aplicação é responsável por:
+            Cadastrar Aplicações utilizando o verbo POST
+            listar todas aplicações utilizando o verbo GET
+            Lista a aplicação por Id
+            Deleta a aplicação por Id
+            Atualiza a aplicação por Id 
+            </summary>
+        </member>
+        <member name="M:Eaton.Mentoria.WebApi.Controllers.AplicacaoController.GetAction">
+            <summary>
+            Retorna a aplicação no formato JSON
+            </summary>
+            <returns>Retorna todaos os dados da aplicação no formato JSON</returns>
+        </member>
+        <member name="M:Eaton.Mentoria.WebApi.Controllers.AplicacaoController.Cadastrar(Eaton.Mentoria.Domain.Entities.AplicacaoDomain)">
+            <summary>
+            Cadastra a aplicação recebendo os dados no BODY no formato JSON
+            </summary>
+            <param name="aplicacao">Recebe um objeto aplicação</param>
+            <returns>Se cadastrado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
+        </member>
+        <member name="M:Eaton.Mentoria.WebApi.Controllers.AplicacaoController.Atualizar(Eaton.Mentoria.Domain.Entities.AplicacaoDomain,System.Int32)">
+            <summary>
+            Para atualizar a aplicação é necessário passar o id da aplicação que se deseja atualizar e os dados que serão atualizados da aplicação no corpo (BODY) no formato JSON
+            </summary>
+            <param name="aplicacao">Novos dados que vão para a aplicação</param>
+            <param name="id">Se atualizado retorna ok(200) ou se não cadastrou retorna bad request(400</param>
+            <returns></returns>
+        </member>
+        <member name="T:Eaton.Mentoria.WebApi.Controllers.CategoriaController">
+            <summary>
+            O controller categoria é responsável por:
+            Cadastrar Categoria utilizando o verbo POST
+            listar todas categorias utilizando o verbo GET
+            Lista a categoria  por Id
+            Atualiza a categoria por Id     
+            </summary>
+        </member>
+        <member name="M:Eaton.Mentoria.WebApi.Controllers.CategoriaController.GetAction">
+            <summary>
+            Reltorna todas AS categoria no formato JSON
+            </summary>
+            <returns>Retorna todos os dados do usuário no formato JSON</returns>
+        </member>
+        <member name="M:Eaton.Mentoria.WebApi.Controllers.CategoriaController.Cadastrar(Eaton.Mentoria.Domain.Entities.CategoriaDomain)">
+            <summary>
+            Cadastra a categoria recebendo os dados no BODY no formato JSON
+            </summary>
+            <param name="categoria">Recebe um objeto Categoria</param>
+            <returns>Se cadastrado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
+        </member>
+        <member name="M:Eaton.Mentoria.WebApi.Controllers.CategoriaController.Atualizar(Eaton.Mentoria.Domain.Entities.CategoriaDomain,System.Int32)">
+            <summary>
+            Para atualizar a categoria é necessário passar o id da categora que se deseja atualizar e os dados que serão atualizados da categoria no corpo (BODY) no formato JSON
+            </summary>
+            <param name="categoria"></param>
+            <param name="id">id da categoria a se atualizado</param>Categoria a ser atualizada
+            <returns>Se atualizado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
+        </member>
+        <member name="T:Eaton.Mentoria.WebApi.Controllers.MentoradoController">
+            <summary>
+            O controller Mentorado é responsável por:
+            Cadastrar Mentorados utilizando o verbo POST
+            listar todos mentorados utilizando o verbo GET
+            Lista o mentorado por Id
+            Deleta o mentorado por Id
+            Atualiza o mentorado por Id
+            </summary>
+        </member>
+        <member name="T:Eaton.Mentoria.WebApi.Controllers.MentorController">
+            <summary>
+            O controller Mentor é responsável por:
+            Cadastrar Mentores utilizando o verbo POST
+            listar todos mentores utilizando o verbo GET
+            Lista o mentor por Id
+            Deleta o mentor por Id
+            Atualiza o mentor por Id
+            </summary>
+        </member>
+        <member name="T:Eaton.Mentoria.WebApi.Controllers.MentoriaController">
+            <summary>
+            O controller mentoria é responsável por:
+            Cadastrar Mentorias utilizando o verbo POST
+            listar todas mentorias utilizando o verbo GET
+            Lista a mentoria por Id
+            Deleta a mentoria por Id
+            Atualiza a mentoria por Id 
+            </summary>
+        </member>
+        <member name="T:Eaton.Mentoria.WebApi.Controllers.UsuarioController">
+            <summary>
+            O controller usuário é responsável por:
+            Cadastrar Usuários utilizando o verbo POST
+            listar todos usuários utilizando o verbo GET
+            Lista o usuário por Id
+            Deleta o usuário por Id
+            Atualiza o usuário por Id
+            </summary>
+        </member>
+        <member name="M:Eaton.Mentoria.WebApi.Controllers.UsuarioController.GetAction">
+            <summary>
+            Retorna os usuários no formato JSON
+            </summary>
+            <returns>Retorna todos os dados do usuário no formato JSON</returns>
+        </member>
+        <member name="M:Eaton.Mentoria.WebApi.Controllers.UsuarioController.Cadastrar(Eaton.Mentoria.Domain.Entities.UsuarioDomain)">
+            <summary>
+            Cadastra o usuário recebendo os dados no BODY no formato JSON
+            </summary>
+            <param name="usuario">Recebe um objeto usuario</param>
+            <returns>Se cadastrado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
+        </member>
+        <member name="M:Eaton.Mentoria.WebApi.Controllers.UsuarioController.Login(Eaton.Mentoria.Domain.Entities.UsuarioDomain,Eaton.Mentoria.WebApi.util.SigningConfigurations,Eaton.Mentoria.WebApi.util.TokenConfigurations)">
+             <summary>
+             Efetua o Login do usuário
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 POST /api/usuario/login
+                 {
+                    "email": "email@email.com",
+                    "senha": "123456"
+                 }
+            
+             </remarks>
+             <param name="usuario">Email e senha do usuário</param>
+             <returns></returns>
+        </member>
+        <member name="M:Eaton.Mentoria.WebApi.Controllers.UsuarioController.Atualizar(Eaton.Mentoria.Domain.Entities.UsuarioDomain,System.Int32)">
+            <summary>
+            Para atualizar o usuário é necessário passar o id do usuário que se deseja atualizar e os dados que serão atualizados do usuário no corpo (BODY) no formato JSON
+            </summary>
+            <param name="usuario">Novos dados que vão para o usuario</param>
+            <param name="id"></param>
+            <returns>Se atualizado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
+        </member>
+        <member name="M:Eaton.Mentoria.WebApi.Controllers.UsuarioController.Excluir(System.Int32)">
+            <summary>
+            Deleta o usuário recebendo os dados no BODY no formato JSON
+            </summary>
+            <param name="id">id dO usuario que deve ser deletado</param>
+            <returns>Se deletado retorna ok(200) ou se não deletou retorna bad request(400)</returns>
+        </member>
+        <member name="T:Eaton.Sede.WebApi.Controllers.SedeController">
+            <summary>
+            O controller sede é responsável por:
+            Cadastrar sedes utilizando o verbo POST
+            listar todas sedes utilizando o verbo GET
+            Lista a sede por Id
+            Deleta a sede por Id
+            Atualiza a sede por Id 
+            </summary>
+        </member>
+        <member name="M:Eaton.Sede.WebApi.Controllers.SedeController.Cadastrar(Eaton.Mentoria.Domain.Entities.SedeDomain)">
+            <summary>
+            Cadastra a sede recebendo os dados no BODY no formato JSON
+            </summary>
+            <param name="sede">Recebe um objeto usuario</param>
+            <returns>Se cadastrado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
+        </member>
+        <member name="M:Eaton.Sede.WebApi.Controllers.SedeController.Atualizar(Eaton.Mentoria.Domain.Entities.SedeDomain,System.Int32)">
+            <summary>
+            Para atualizar a sede é necessário passar o id da sede que se deseja atualizar e os dados que serão atualizados da sede no corpo (BODY) no formato JSON
+            </summary>
+            <param name="sede">Novos dados que vão para a sede</param>
+            <param name="id">Id da sede a ser atualizada</param>
+            <returns>Se atualizado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
+        </member>
+    </members>
+</doc>
