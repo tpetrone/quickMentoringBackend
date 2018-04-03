@@ -25,7 +25,13 @@ namespace Eaton.Mentoria.WebApi.Controllers
         public MentoradoController(IAplicacaoRepository aplicacaoRepository)
         {
             this.aplicacaoRepository = aplicacaoRepository;
-        }
+        }      
+
+        /// <summary>
+        /// Retorna os mentorados no formato JSON
+        /// </summary>
+        /// <param name="id">Retorna o Id do mentorado</param>
+        /// <returns>Retorna todos os dados do usuário no formato JSON</returns>
 
         [HttpGet]
         [Route("{id}/aplicacoes")]

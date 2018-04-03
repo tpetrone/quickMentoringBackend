@@ -5,6 +5,7 @@ using Eaton.Mentoria.Domain.Entities;
 using Eaton.Mentoria.Repository.Context;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Eaton.Sede.WebApi.Controllers
 {  
@@ -34,12 +35,22 @@ namespace Eaton.Sede.WebApi.Controllers
         {
             return Ok(_sedeRepository.Listar());
         }
-
-       /// <summary>
-       /// Cadastra a sede recebendo os dados no BODY no formato JSON
-       /// </summary>
-       /// <param name="sede">Recebe um objeto usuario</param>
-       /// <returns>Se cadastrado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
+        
+        /// <summary>
+        /// Efetua o Cadastro da Sede        
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /api/Sede
+        ///     {
+        ///        "SedeId": 7,
+        ///        "Nome": "Nome das Sedes"
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="sede">Nome da Sede</param>
+        /// <returns></returns>
 
        [HttpPost]
         [Authorize("Bearer", Roles = "Admin")]
@@ -68,16 +79,21 @@ namespace Eaton.Sede.WebApi.Controllers
             {
                 return BadRequest(e.Message);
             }
-        }        
+        }     
      
-        /// <summary>
-        /// Para atualizar a sede é necessário passar o id da sede que se deseja atualizar e os dados que serão atualizados da sede no corpo (BODY) no formato JSON
-        /// </summary>
-        /// <param name="sede">Novos dados que vão para a sede</param>
-        /// <param name="id">Id da sede a ser atualizada</param>
-        /// <returns>Se atualizado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
+         /// <summary>
+         /// Para atualizar a sede é necessário passar o id da sede que se deseja atualizar e os dados que serão atualizados da sede no corpo (BODY) no formato JSON
+         /// </summary>
+         /// <param name="sede">Novos dados que vão para a sede</param>
+         /// <param name="id">Id da sede</param>
+         /// <response code="200">Retorna um int com o id da sede</response>
+         /// <response code="404">Retorna uma string</response>
+         /// <response code="400">Retorna uma lista de erros</response>          
 
         [HttpPut("{id}")]
+        [ProducesResponseType(typeof(int), 200)]
+        [ProducesResponseType(typeof(string), 404)]
+        [ProducesResponseType(typeof(List<ModelError>), 400)]
         [Authorize("Bearer", Roles = "Admin")]
         public IActionResult Atualizar([FromBody] SedeDomain sede, int id)
         {

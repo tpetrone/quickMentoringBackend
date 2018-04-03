@@ -46,12 +46,21 @@ namespace Eaton.Mentoria.WebApi.Controllers
                 return Ok(aplicacao);
             else
                 return NotFound();
-        }       
-     
+        }      
         
         /// <summary>
         /// Cadastra a aplicação recebendo os dados no BODY no formato JSON
         /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /api/aplicacao
+        ///     {
+        ///        "Justificativa": "aprender mais",
+        ///        "Aceite": "0"
+        ///     }
+        ///
+        /// </remarks>
         /// <param name="aplicacao">Recebe um objeto aplicação</param>
         /// <returns>Se cadastrado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
         [HttpPost]
@@ -88,7 +97,9 @@ namespace Eaton.Mentoria.WebApi.Controllers
         /// </summary>
         /// <param name="aplicacao">Novos dados que vão para a aplicação</param>
         /// <param name="id">Se atualizado retorna ok(200) ou se não cadastrou retorna bad request(400</param>
-        /// <returns></returns>
+        /// <response code="200">Retorna um int com o id da aplicação</response>
+        /// <response code="404">Retorna uma string</response>
+        /// <response code="400">Retorna uma lista de erros</response> 
         [HttpPut("{id}")]
         public IActionResult Atualizar([FromBody] AplicacaoDomain aplicacao, int id)
         {

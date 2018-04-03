@@ -79,7 +79,6 @@ namespace Eaton.Mentoria.WebApi.Controllers
             }
         }
 
-
         /// <summary>
         /// Efetua o Login do usuário
         /// </summary>

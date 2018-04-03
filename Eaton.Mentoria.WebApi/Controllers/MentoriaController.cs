@@ -68,8 +68,22 @@ namespace Eaton.Mentoria.WebApi.Controllers
 
             return Ok(resultado);
         }
-
-
+         /// <summary>
+         /// Efetua a mentoria
+         /// </summary>
+         /// <remarks>
+         /// Sample request:
+         ///
+         ///     POST /api/mentoria
+         ///     {
+         ///        "ativa": "1",
+         ///        "Online": "1",
+         ///        "Nome": "Nome da Mentoria"
+         ///     }
+         ///
+         /// </remarks>
+         /// <param name="mentoria">Dados da mentoria</param>
+         /// <returns></returns>
         [HttpPost]
         [Authorize("Bearer", Roles = "Mentor")]
         public IActionResult Cadastrar([FromBody] MentoriaDomain mentoria)
@@ -97,9 +111,16 @@ namespace Eaton.Mentoria.WebApi.Controllers
             {
                 return BadRequest(e.Message);
             }
-        }
+        }   
 
-
+        /// <summary>
+        /// Para atualizar a mentoria é necessário passar o id da mentoria que se deseja atualizar e os dados que serão atualizados da mentoria no corpo (BODY) no formato JSON
+        /// </summary>
+        /// <param name="mentoria">Novos dados que vão para a mentoria</param>
+        /// <param name="id"></param>
+        /// <response code="200">Retorna um int com o id da mentoria</response>
+        /// <response code="404">Retorna uma string</response>
+        /// <response code="400">Retorna uma lista de erros</response>  
         [HttpPut("{id}")]
         public IActionResult Atualizar([FromBody] MentoriaDomain mentoria, int id)
         {
