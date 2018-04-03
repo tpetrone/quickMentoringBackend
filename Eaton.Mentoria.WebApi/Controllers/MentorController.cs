@@ -27,7 +27,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
             this.mentoriaReprository = mentoriaRepository;
         }
         /// <summary>
-        /// Retorna os usuários no formato JSON
+        /// Retorna os mentores no formato JSON
         /// </summary>
         /// <param name="id">Retorna o Id da mentor</param>
         /// <returns>Retorna todos os dados do mentor no formato JSON</returns>

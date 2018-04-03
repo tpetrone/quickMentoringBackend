@@ -212,7 +212,16 @@ namespace Eaton.Mentoria.WebApi.Controllers
             {
                 return BadRequest(e.Message);
             }
-        }
+        }        
+
+        /// <summary>
+        /// Para atualizar o usuário é necessário passar o id do usuário que se deseja atualizar e os dados que serão atualizados do usuário no corpo (BODY) no formato JSON
+        /// </summary>
+        /// <param name="perfil">Novos dados que vão para o perfil</param>
+        /// <param name="id"></param>
+        /// <response code="200">Retorna um int com o id do perfil</response>
+        /// <response code="404">Retorna uma string</response>
+        /// <response code="400">Retorna uma lista de erros</response>       
 
         [HttpPut("{id}/perfil")]
         public IActionResult AtualizarPerfil([FromBody] PerfilDomain perfil, [FromRoute] int id)
@@ -242,7 +251,12 @@ namespace Eaton.Mentoria.WebApi.Controllers
                 return BadRequest(e.Message);
             }
         }
-
+       
+        /// <summary>
+        /// Retorna os usuários no formato JSON
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retorna todos os dados do usuário no formato JSON</returns>
         [HttpGet("{id}")]
         public IActionResult GetPerfil([FromRoute] int id)
         {

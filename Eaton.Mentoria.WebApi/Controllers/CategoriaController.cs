@@ -27,9 +27,9 @@ namespace Eaton.Mentoria.WebApi.Controllers
         }
         
          /// <summary>
-         /// Reltorna todas AS categoria no formato JSON
+         /// Retorna todas as categorias no formato JSON
          /// </summary>
-         /// <returns>Retorna todos os dados do usuário no formato JSON</returns>
+         /// <returns>Retorna todos os dados da categoria no formato JSON</returns>
         [HttpGet]
         public IActionResult GetAction()
         {
@@ -80,7 +80,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
         }     
  
         /// <summary>
-        /// Para atualizar a categoria é necessário passar o id da categora que se deseja atualizar e os dados que serão atualizados da categoria no corpo (BODY) no formato JSON
+        /// Para atualizar a categoria é necessário passar o id da categoria que se deseja atualizar e os dados que serão atualizados da categoria no corpo (BODY) no formato JSON
         /// </summary>
         /// <param name="categoria"></param>
         /// <param name="id">id da categoria a se atualizado</param>Categoria a ser atualizada

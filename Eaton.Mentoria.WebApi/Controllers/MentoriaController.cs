@@ -30,7 +30,12 @@ namespace Eaton.Mentoria.WebApi.Controllers
         {
             _mentoriaRepository = mentoriaRepository;
             this.aplicacaoRepository = aplicacaoRepository;
-        }
+        }       
+        /// <summary>
+        /// Retorna as mentorias no formato JSON
+        /// </summary>
+        /// <param name="id">Id da Mentoria</param>
+        /// <returns>Retorna todas as mentorias no formato JSON</returns>
 
         [HttpGet]
         [Route("{id}/aplicacoes")]
@@ -40,8 +45,10 @@ namespace Eaton.Mentoria.WebApi.Controllers
 
             return Ok(aplicacoes);
         }
-
-
+        /// <summary>
+        /// Retorna as mentorias no formato JSON
+        /// </summary>
+        /// <returns>Retorna todas as mentorias no formato JSON</returns>
         [HttpGet]
         public IActionResult GetAction()
         {
