@@ -20,7 +20,7 @@ namespace Eaton.Mentoria.Domain.Entities
         [Required]
         [StringLength(650)]
         public string MiniBio { get; set; }
-        public string Foto { get; set; }
+        public byte[] Foto { get; set; }
         
         [Required]
         [StringLength(9)]
