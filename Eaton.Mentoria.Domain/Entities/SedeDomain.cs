@@ -1,13 +1,16 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace Eaton.Mentoria.Domain.Entities
 {
     public class SedeDomain
     {   
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+       [Key]
+       [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+       [JsonProperty(PropertyName = "id")]
        public int SedeId {get; set;} 
 
        public string Nome {get; set;}

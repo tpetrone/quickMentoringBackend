@@ -19,7 +19,7 @@ namespace Eaton.Sede.WebApi.Controllers
     /// Atualiza a sede por Id 
      /// </summary>
     
-    [Route("api/[controller]")]
+    [Route("api/sede")]
     public class SedeController : Controller
     {
         private ISedeRepository _sedeRepository;

@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Eaton.Mentoria.WebApi.util;
 using Swashbuckle.AspNetCore.Swagger;
+using Newtonsoft.Json.Serialization;
 
 namespace Eaton.Mentoria.WebApi
 {
@@ -60,6 +61,7 @@ namespace Eaton.Mentoria.WebApi
             services.AddMvc().AddJsonOptions(Options => {
                 Options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 Options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+                Options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             });
 
             
@@ -127,6 +129,8 @@ namespace Eaton.Mentoria.WebApi
             services.AddScoped(typeof(IMentoriaRepository), typeof(MentoriaRepository));
             services.AddScoped(typeof(IUsuarioRepository), typeof(UsuarioRepository));
             services.AddScoped(typeof(IAplicacaoRepository), typeof(AplicacaoRepository));
+
+            services.AddRouting(Options => Options.LowercaseUrls = true);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

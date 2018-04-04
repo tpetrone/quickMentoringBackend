@@ -23,11 +23,17 @@ namespace Eaton.Mentoria.WebApi.Controllers
     /// Deleta o usuário por Id
     /// Atualiza o usuário por Id
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/usuario")]
     public class UsuarioController : Controller
     {
         private IUsuarioRepository _usuarioRepository;
         private IPerfilRepository perfilRepository;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="usuarioRepository"></param>
+        /// <param name="perfilRepository"></param>
         public UsuarioController(IUsuarioRepository usuarioRepository, IPerfilRepository perfilRepository)
         {
             _usuarioRepository = usuarioRepository;

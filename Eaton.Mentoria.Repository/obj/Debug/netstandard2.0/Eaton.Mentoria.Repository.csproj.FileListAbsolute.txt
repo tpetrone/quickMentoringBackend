@@ -28,3 +28,13 @@ C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.Repository\ob
 C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.Repository\obj\Debug\netstandard2.0\Eaton.Mentoria.Repository.AssemblyInfo.cs
 C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.Repository\obj\Debug\netstandard2.0\Eaton.Mentoria.Repository.dll
 C:\Users\CodeXP\Desktop\EATON\quickMentoringBackend\Eaton.Mentoria.Repository\obj\Debug\netstandard2.0\Eaton.Mentoria.Repository.pdb
+C:\Users\CodeXP\Desktop\Back-Brian\quickMentoringBackend\Eaton.Mentoria.Repository\bin\Debug\netstandard2.0\Eaton.Mentoria.Repository.deps.json
+C:\Users\CodeXP\Desktop\Back-Brian\quickMentoringBackend\Eaton.Mentoria.Repository\bin\Debug\netstandard2.0\Eaton.Mentoria.Repository.dll
+C:\Users\CodeXP\Desktop\Back-Brian\quickMentoringBackend\Eaton.Mentoria.Repository\bin\Debug\netstandard2.0\Eaton.Mentoria.Repository.pdb
+C:\Users\CodeXP\Desktop\Back-Brian\quickMentoringBackend\Eaton.Mentoria.Repository\bin\Debug\netstandard2.0\Eaton.Mentoria.Domain.dll
+C:\Users\CodeXP\Desktop\Back-Brian\quickMentoringBackend\Eaton.Mentoria.Repository\bin\Debug\netstandard2.0\Eaton.Mentoria.Domain.pdb
+C:\Users\CodeXP\Desktop\Back-Brian\quickMentoringBackend\Eaton.Mentoria.Repository\obj\Debug\netstandard2.0\Eaton.Mentoria.Repository.csproj.CoreCompileInputs.cache
+C:\Users\CodeXP\Desktop\Back-Brian\quickMentoringBackend\Eaton.Mentoria.Repository\obj\Debug\netstandard2.0\Eaton.Mentoria.Repository.AssemblyInfoInputs.cache
+C:\Users\CodeXP\Desktop\Back-Brian\quickMentoringBackend\Eaton.Mentoria.Repository\obj\Debug\netstandard2.0\Eaton.Mentoria.Repository.AssemblyInfo.cs
+C:\Users\CodeXP\Desktop\Back-Brian\quickMentoringBackend\Eaton.Mentoria.Repository\obj\Debug\netstandard2.0\Eaton.Mentoria.Repository.dll
+C:\Users\CodeXP\Desktop\Back-Brian\quickMentoringBackend\Eaton.Mentoria.Repository\obj\Debug\netstandard2.0\Eaton.Mentoria.Repository.pdb

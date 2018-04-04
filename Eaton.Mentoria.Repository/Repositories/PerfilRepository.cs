@@ -19,9 +19,9 @@ namespace Eaton.Mentoria.Repository.Repositories
             throw new System.NotImplementedException();
         }
 
-        public bool UsuarioExiste(string cep, string foto, string minibio)
+        public bool UsuarioExiste(string cep,  string minibio)
         {
-            if(_dbContext.Perfis.Any(x => x.Cep==cep && x.Foto== foto && x.MiniBio==minibio ))
+            if(_dbContext.Perfis.Any(x => x.Cep==cep &&  x.MiniBio==minibio ))
             {
                 return true;
             }

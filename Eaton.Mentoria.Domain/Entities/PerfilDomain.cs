@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace Eaton.Mentoria.Domain.Entities
 {
@@ -7,6 +8,7 @@ namespace Eaton.Mentoria.Domain.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [JsonProperty(PropertyName = "id")]
         public int PerfilId{ get; set; }
         
         [ForeignKey("UsuarioId")]

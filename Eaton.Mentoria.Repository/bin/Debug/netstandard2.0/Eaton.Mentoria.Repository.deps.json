@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "d488ddc96ae8b5f7187f110ec37796b08bf91b70"
+    "signature": "cde2bde7347bc9c399433063692bd8d3b253cd08"
   },
   "compilationOptions": {},
   "targets": {
@@ -143,6 +143,11 @@
       "NETStandard.Library/2.0.1": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "Newtonsoft.Json/11.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
       "Remotion.Linq/2.1.1": {
@@ -453,6 +458,7 @@
       },
       "Eaton.Mentoria.Domain/1.0.0": {
         "dependencies": {
+          "Newtonsoft.Json": "11.0.2",
           "System.ComponentModel.Annotations": "4.5.0-preview1-26216-02"
         },
         "runtime": {
@@ -585,6 +591,13 @@
       "sha512": "sha512-oA6nwv9MhEKYvLpjZ0ggSpb1g4CQViDVQjLUcDWg598jtvJbpfeP2reqwI1GLW2TbxC/Ml7xL6BBR1HmKPXlTg==",
       "path": "netstandard.library/2.0.1",
       "hashPath": "netstandard.library.2.0.1.nupkg.sha512"
+    },
+    "Newtonsoft.Json/11.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+      "path": "newtonsoft.json/11.0.2",
+      "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
     },
     "Remotion.Linq/2.1.1": {
       "type": "package",

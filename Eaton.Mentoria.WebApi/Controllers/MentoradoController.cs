@@ -17,7 +17,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
     /// Atualiza o mentorado por Id
     /// </summary>
 
-    [Route("api/[controller]")]
+    [Route("api/mentorado")]
     public class MentoradoController : Controller
     {
         private IAplicacaoRepository aplicacaoRepository;

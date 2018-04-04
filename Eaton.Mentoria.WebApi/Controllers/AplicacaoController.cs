@@ -16,7 +16,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
     /// Deleta a aplicação por Id
     /// Atualiza a aplicação por Id 
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/aplicacao")]
     public class AplicacaoController : Controller
     {
         private IAplicacaoRepository _aplicacaoRepository;

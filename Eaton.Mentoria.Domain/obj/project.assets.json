@@ -26,6 +26,15 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
+      "Newtonsoft.Json/11.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
       "System.ComponentModel.Annotations/4.5.0-preview1-26216-02": {
         "type": "package",
         "compile": {
@@ -179,6 +188,34 @@
         "netstandard.library.nuspec"
       ]
     },
+    "Newtonsoft.Json/11.0.2": {
+      "sha512": "IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+      "type": "package",
+      "path": "newtonsoft.json/11.0.2",
+      "files": [
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.11.0.2.nupkg.sha512",
+        "newtonsoft.json.nuspec"
+      ]
+    },
     "System.ComponentModel.Annotations/4.5.0-preview1-26216-02": {
       "sha512": "dQGK4S1A8yJqNZal/7U1Vlgk0r6d0Cc8+v8l20f7lxGeJDP+Wso8QNk2uNMRj7z/siWL//o+5YRyW74j40+EKw==",
       "type": "package",
@@ -270,6 +307,7 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "NETStandard.Library >= 2.0.1",
+      "Newtonsoft.Json >= 11.0.2",
       "System.ComponentModel.Annotations >= 4.5.0-preview1-26216-02"
     ]
   },
@@ -280,11 +318,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\CodeXP\\Desktop\\EATON\\quickMentoringBackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickMentoringBackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj",
       "projectName": "Eaton.Mentoria.Domain",
-      "projectPath": "C:\\Users\\CodeXP\\Desktop\\EATON\\quickMentoringBackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj",
+      "projectPath": "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickMentoringBackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj",
       "packagesPath": "C:\\Users\\CodeXP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\CodeXP\\Desktop\\EATON\\quickMentoringBackend\\Eaton.Mentoria.Domain\\obj\\",
+      "outputPath": "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickMentoringBackend\\Eaton.Mentoria.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -317,6 +355,10 @@
             "target": "Package",
             "version": "[2.0.1, )",
             "autoReferenced": true
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[11.0.2, )"
           },
           "System.ComponentModel.Annotations": {
             "target": "Package",

@@ -15,7 +15,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
      /// Lista a categoria  por Id
      /// Atualiza a categoria por Id     
      /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/categoria")]
     public class CategoriaController : Controller
     {
         private ICategoriaRepository _categoriaRepository;
