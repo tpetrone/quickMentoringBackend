@@ -19,7 +19,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
     /// Deleta a mentoria por Id
     /// Atualiza a mentoria por Id 
     /// </summary>
-    
+
     [Route("api/mentoria")]
     public class MentoriaController : Controller
     {
@@ -30,7 +30,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
         {
             _mentoriaRepository = mentoriaRepository;
             this.aplicacaoRepository = aplicacaoRepository;
-        }       
+        }
         /// <summary>
         /// Retorna as mentorias no formato JSON
         /// </summary>
@@ -81,6 +81,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
 
             return Ok(aplicacoes);
         }
+
         /// <summary>
         /// Retorna as mentorias no formato JSON
         /// </summary>
@@ -89,27 +90,43 @@ namespace Eaton.Mentoria.WebApi.Controllers
         public IActionResult GetAction()
         {
 
-            IEnumerable<MentoriaDomain> lsMentoria = _mentoriaRepository.Listar(new string[] { "Categoria", "Sede", "Usuario", "Usuario.Perfil" });
+            var mentorias = _mentoriaRepository
+                                .Listar(new string[] { "Categoria", "Sede", "Usuario", "Usuario.Perfil" })
+                                .Select(obj => new
+                                {
+                                    id = obj.MentoriaId,
+                                    ativa = obj.Ativa,
+                                    nome = obj.Nome,
+                                    categoria = new
+                                    {
+                                        nome = obj.Categoria.Nome,
+                                        id = obj.CategoriaId
+                                    },
+                                    sede = new
+                                    {
+                                        nome = obj.Sede.Nome,
+                                        id = obj.SedeId
+                                    },
+                                    usuario = new
+                                    {
+                                        id = obj.Usuario.UsuarioId,
+                                        email = obj.Usuario.Email,
+                                        password = "",
+                                        role = obj.Usuario.Role,
+                                        ativo = obj.Usuario.Ativo,
+                                        perfil = new
+                                        {
+                                            id = obj.Usuario.UsuarioId,
+                                            nome = obj.Usuario.Perfil?.Nome,
+                                            miniBio = obj.Usuario.Perfil?.MiniBio,
+                                            foto = obj.Usuario.Perfil?.Foto,
+                                            cep = obj.Usuario.Perfil?.Cep,
+                                            sedeId = obj.Usuario.Perfil?.SedeId
+                                        }
+                                    }
+                                });
 
-            var resultado = lsMentoria.Select(x => new
-            {
-                id = x.MentoriaId,
-                nome = x.Nome,
-                categoria = new
-                {
-                    nome = x.Categoria.Nome,
-                    id = x.Categoria.CategoriaId
-                },
-                sede = new
-                {
-                    nome = x.Sede.Nome,
-                    id = x.Sede.SedeId,
-                },
-                usuarioid = x.Usuario.UsuarioId,
-                usuarionome = x.Usuario.Perfil is null ? "" : x.Usuario.Perfil.Nome
-            });
-
-            return Ok(resultado);
+            return Ok(mentorias);
         }
 
 
@@ -192,7 +209,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
             {
                 return BadRequest(e.Message);
             }
-        }   
+        }
 
         /// <summary>
         /// Para atualizar a mentoria é necessário passar o id da mentoria que se deseja atualizar e os dados que serão atualizados da mentoria no corpo (BODY) no formato JSON
