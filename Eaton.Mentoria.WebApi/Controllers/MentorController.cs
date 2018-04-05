@@ -43,7 +43,39 @@ namespace Eaton.Mentoria.WebApi.Controllers
                 mentoria.Sede.Mentorias.Clear();
             });
 
-            return Ok(mentorias);
+
+            var result = mentorias.Select(obj => new {
+                id = obj.MentoriaId,
+                nome = obj.Nome,
+                ativa = obj.Ativa,
+                categoria = new
+                {
+                    nome = obj.Categoria.Nome,
+                    id = obj.CategoriaId
+                },
+                sede = new
+                {
+                    nome = obj.Sede.Nome,
+                    id = obj.SedeId
+                },
+                usuario = new
+                {
+                    id = obj.Usuario.UsuarioId,
+                    email = obj.Usuario.Email,
+                    password = "",
+                    role = obj.Usuario.Role,
+                    ativo = obj.Usuario.Ativo,
+                    perfil = new {
+                        id = obj.Usuario.UsuarioId,
+                        nome = obj.Usuario.Perfil.Nome,
+                        miniBio = obj.Usuario.Perfil.MiniBio,
+                        foto = obj.Usuario.Perfil.Foto,
+                        cep = obj.Usuario.Perfil.Cep,
+                        sedeId = obj.Usuario.Perfil.SedeId
+                    }
+                }
+            });
+            return Ok(result);
 
         }
     }
