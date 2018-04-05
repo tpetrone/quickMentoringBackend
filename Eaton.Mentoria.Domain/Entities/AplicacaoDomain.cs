@@ -7,7 +7,7 @@ namespace Eaton.Mentoria.Domain.Entities
 {
     public class AplicacaoDomain
     {
-        
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [JsonProperty(PropertyName = "id")]
@@ -17,6 +17,7 @@ namespace Eaton.Mentoria.Domain.Entities
         public bool? Aceite { get; set; }
         
         [ForeignKey("MentoradoId")]
+        [JsonProperty(PropertyName = "usuarioId")]
         public virtual UsuarioDomain Mentorado { get; set; }
         public int MentoradoId { get; set; }
         

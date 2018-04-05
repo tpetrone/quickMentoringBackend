@@ -20,10 +20,12 @@ namespace Eaton.Mentoria.WebApi.Controllers
     public class AplicacaoController : Controller
     {
         private IAplicacaoRepository _aplicacaoRepository;
+        private IUsuarioRepository usuarioRepository;
 
-        public AplicacaoController(IAplicacaoRepository aplicacaoRepository)
+        public AplicacaoController(IAplicacaoRepository aplicacaoRepository, IUsuarioRepository usuarioRepository)
         {
             _aplicacaoRepository = aplicacaoRepository;
+            this.usuarioRepository = usuarioRepository;
         }
 
         /// <summary>
@@ -192,6 +194,10 @@ namespace Eaton.Mentoria.WebApi.Controllers
         {
             try
             {
+                if (!usuarioRepository.Listar().Any(d => d.UsuarioId == aplicacao.MentoradoId))
+                    return BadRequest("Usuário não existe");
+
+
                 if (ModelState.IsValid)
                 {
                     aplicacao.AplicacaoId = id;
