@@ -14,14 +14,14 @@ namespace Eaton.Mentoria.Repository.Repositories
             _dbContext = iusuariocontext;
         }
 
-        public bool PerfilExiste(string cep, string foto, string minibio)
+        public bool PerfilExiste(string cep, byte[] foto, string minibio)
         {
             throw new System.NotImplementedException();
         }
 
-        public bool UsuarioExiste(string cep,  string minibio)
+        public bool UsuarioExiste(string cep, byte[] foto, string minibio)
         {
-            if(_dbContext.Perfis.Any(x => x.Cep==cep &&  x.MiniBio==minibio ))
+            if(_dbContext.Perfis.Any(x => x.Cep==cep && x.Foto==foto && x.MiniBio==minibio ))
             {
                 return true;
             }

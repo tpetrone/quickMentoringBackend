@@ -4,7 +4,7 @@ namespace Eaton.Mentoria.Domain.Contracts
 {
     public interface IPerfilRepository : IBaseRepository<PerfilDomain>
     {
-        bool PerfilExiste(string cep, string foto,string minibio);
+        bool PerfilExiste(string cep, byte[] foto, string minibio);
          
     }
 }
