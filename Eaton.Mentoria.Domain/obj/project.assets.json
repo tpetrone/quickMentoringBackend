@@ -312,28 +312,33 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\CodeXP\\.nuget\\packages\\": {},
+    "C:\\Users\\Brian\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickMentoringBackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Brian\\source\\repos\\quickMentoringBackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj",
       "projectName": "Eaton.Mentoria.Domain",
-      "projectPath": "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickMentoringBackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj",
-      "packagesPath": "C:\\Users\\CodeXP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickMentoringBackend\\Eaton.Mentoria.Domain\\obj\\",
+      "projectPath": "C:\\Users\\Brian\\source\\repos\\quickMentoringBackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj",
+      "packagesPath": "C:\\Users\\Brian\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Brian\\source\\repos\\quickMentoringBackend\\Eaton.Mentoria.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\CodeXP\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Brian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
