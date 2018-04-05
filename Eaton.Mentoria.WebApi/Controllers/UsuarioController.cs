@@ -269,7 +269,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
         [HttpGet("{id}")]
         public IActionResult GetPerfil([FromRoute] int id)
         {
-            return Ok(perfilRepository.Listar(new string[] { "Perfil" }).Where(perfil => perfil.UsuarioId == id));
+            return Ok(_usuarioRepository.Listar(new[] { "Perfil" }).FirstOrDefault(user => user.UsuarioId == id));
         }
     }
 }
