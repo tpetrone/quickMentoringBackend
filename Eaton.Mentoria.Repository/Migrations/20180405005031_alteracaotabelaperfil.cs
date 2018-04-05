@@ -8,22 +8,21 @@ namespace Eaton.Mentoria.Repository.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<byte[]>(
+            migrationBuilder.DropColumn("Foto", "Perfis");
+
+            migrationBuilder.AddColumn<byte[]>(
                 name: "Foto",
                 table: "Perfis",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldNullable: true);
+                nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.DropColumn("Foto", "Perfis");
+            migrationBuilder.AddColumn<string>(
                 name: "Foto",
                 table: "Perfis",
-                nullable: true,
-                oldClrType: typeof(byte[]),
-                oldNullable: true);
+                nullable: true);
         }
     }
 }
