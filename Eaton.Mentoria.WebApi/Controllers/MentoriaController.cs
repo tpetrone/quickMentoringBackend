@@ -41,7 +41,43 @@ namespace Eaton.Mentoria.WebApi.Controllers
         [Route("{id}/aplicacoes")]
         public IActionResult GetAplicacoes([FromRoute]int id)
         {
-            var aplicacoes = aplicacaoRepository.Listar(new string[] { "Mentorado", "Mentorado.Perfil", "Mentoria" }).Where(aplicacao => aplicacao.Mentoria.MentoriaId == id);
+            var aplicacoes = aplicacaoRepository
+                            .Listar(new string[] { "Mentorado", "Mentorado.Perfil", "Mentoria", "Mentoria.Categoria" })
+                            .Where(aplicacao => aplicacao.Mentoria.MentoriaId == id)
+                            .Select(obj => new
+                            {
+                                id = obj.AplicacaoId,
+                                usuario = new
+                                {
+                                    usuarioId = obj.Mentorado.UsuarioId,
+                                    email = obj.Mentorado.Email,
+                                    password = "",
+                                    role = obj.Mentorado.Role,
+                                    ativo = obj.Mentorado.Ativo,
+                                    perfil = new
+                                    {
+                                        id = obj.Mentorado.UsuarioId,
+                                        nome = obj.Mentorado.Perfil?.Nome,
+                                        miniBio = obj.Mentorado.Perfil?.MiniBio,
+                                        foto = obj.Mentorado.Perfil?.Foto,
+                                        cep = obj.Mentorado.Perfil?.Cep,
+                                        sedeId = obj.Mentorado.Perfil?.SedeId
+                                    }
+                                },
+                                mentoria = new
+                                {
+                                    id = obj.MentoriaId,
+                                    nome = obj.Mentoria.Nome,
+                                    categoria = new
+                                    {
+                                        nome = obj.Mentoria.Categoria.Nome,
+                                        id = obj.Mentoria.CategoriaId
+                                    },
+                                },
+                                justificativa = obj.justificativa,
+                                aceite = obj.Aceite
+
+                            });
 
             return Ok(aplicacoes);
         }
