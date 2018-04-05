@@ -111,22 +111,57 @@ namespace Eaton.Mentoria.WebApi.Controllers
 
             return Ok(resultado);
         }
-         /// <summary>
-         /// Efetua a mentoria
-         /// </summary>
-         /// <remarks>
-         /// Sample request:
-         ///
-         ///     POST /api/mentoria
-         ///     {
-         ///        "ativa": "1",
-         ///        "Online": "1",
-         ///        "Nome": "Nome da Mentoria"
-         ///     }
-         ///
-         /// </remarks>
-         /// <param name="mentoria">Dados da mentoria</param>
-         /// <returns></returns>
+
+
+        [HttpGet]
+        [Route("{id}")]
+        public IActionResult GetMentoria([FromRoute] int id)
+        {
+
+            var mentoria = _mentoriaRepository
+                                .Listar(new string[] { "Categoria", "Sede", "Usuario", "Usuario.Perfil" })
+                                .FirstOrDefault(user => user.MentoriaId == id);
+            if (mentoria is null)
+                return NotFound("Mentoria não encontrada");
+
+            var resultado = new
+            {
+                id = mentoria.MentoriaId,
+                nome = mentoria.Nome,
+                categoria = new
+                {
+                    nome = mentoria.Categoria.Nome,
+                    id = mentoria.Categoria.CategoriaId
+                },
+                sede = new
+                {
+                    nome = mentoria.Sede.Nome,
+                    id = mentoria.Sede.SedeId,
+                },
+                usuarioid = mentoria.Usuario.UsuarioId,
+                usuarionome = mentoria.Usuario.Perfil?.Nome ?? ""
+            };
+
+            return Ok(resultado);
+        }
+
+
+        /// <summary>
+        /// Efetua a mentoria
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /api/mentoria
+        ///     {
+        ///        "ativa": "1",
+        ///        "Online": "1",
+        ///        "Nome": "Nome da Mentoria"
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="mentoria">Dados da mentoria</param>
+        /// <returns></returns>
         [HttpPost]
         [Authorize("Bearer", Roles = "Mentor")]
         public IActionResult Cadastrar([FromBody] MentoriaDomain mentoria)
