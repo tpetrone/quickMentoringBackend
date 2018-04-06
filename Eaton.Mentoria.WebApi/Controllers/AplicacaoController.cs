@@ -37,44 +37,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
         public IActionResult GetAction()
         {
             var aplicacao = _aplicacaoRepository
-              .Listar(new[] { "Mentorado", "Mentorado.Perfil", "Mentoria", "Mentoria.Categoria", "Mentoria.Sede" })
-              .Select(obj => new
-              {
-                  id = obj.AplicacaoId,
-                  usuario = new
-                  {
-                      id = obj.Mentorado.UsuarioId,
-                      email = obj.Mentorado.Email,
-                      password = "",
-                      role = obj.Mentorado.Role,
-                      ativo = obj.Mentorado.Ativo,
-                      perfil = new
-                      {
-                          id = obj.Mentorado.UsuarioId,
-                          nome = obj.Mentorado.Perfil?.Nome,
-                          miniBio = obj.Mentorado.Perfil?.MiniBio,
-                          foto = obj.Mentorado.Perfil?.Foto,
-                          cep = obj.Mentorado.Perfil?.Cep,
-                          sedeId = obj.Mentorado.Perfil?.SedeId
-                      }
-                  },
-                  mentoria = new
-                  {
-                      id = obj.Mentoria.MentoriaId,
-                      nome = obj.Mentoria.Nome,
-                      categoria = new
-                      {
-                          nome = obj.Mentoria.Categoria.Nome,
-                          id = obj.Mentoria.Categoria.CategoriaId,
-                      },
-                      sede = new
-                      {
-                          id = obj.Mentoria.Sede.SedeId,
-                          nome = obj.Mentoria.Sede.Nome
-                      }
-                  },
-                  obj.justificativa
-              });
+              .Listar(new[] { "Mentorado", "Mentorado.Perfil", "Mentoria", "Mentoria.Categoria", "Mentoria.Sede" });
 
             if (aplicacao != null)
                 return Ok(aplicacao);
@@ -89,44 +52,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
         {
             var aplicacao = _aplicacaoRepository
                 .Listar(new[] { "Mentorado", "Mentorado.Perfil", "Mentoria", "Mentoria.Categoria", "Mentoria.Sede" })
-                .Select(obj => new
-                {
-                    id = obj.AplicacaoId,
-                    usuario = new
-                    {
-                        id = obj.Mentorado.UsuarioId,
-                        email = obj.Mentorado.Email,
-                        password = "",
-                        role = obj.Mentorado.Role,
-                        ativo = obj.Mentorado.Ativo,
-                        perfil = new
-                        {
-                            id = obj.Mentorado.UsuarioId,
-                            nome = obj.Mentorado.Perfil?.Nome,
-                            miniBio = obj.Mentorado.Perfil?.MiniBio,
-                            foto = obj.Mentorado.Perfil?.Foto,
-                            cep = obj.Mentorado.Perfil?.Cep,
-                            sedeId = obj.Mentorado.Perfil?.SedeId
-                        }
-                    },
-                    mentoria = new
-                    {
-                        id = obj.Mentoria.MentoriaId,
-                        nome = obj.Mentoria.Nome,
-                        categoria = new
-                        {
-                            nome = obj.Mentoria.Categoria.Nome,
-                            id = obj.Mentoria.Categoria.CategoriaId,
-                        },
-                        sede = new
-                        {
-                            id = obj.Mentoria.Sede.SedeId,
-                            nome = obj.Mentoria.Sede.Nome
-                        }
-                    },
-                    justificativa = obj.justificativa
-                })
-                .First(app => app.id == id);
+                .First(app => app.AplicacaoId == id);
 
             if (aplicacao != null)
                 return Ok(aplicacao);

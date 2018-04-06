@@ -16,8 +16,8 @@ namespace Eaton.Mentoria.WebApi.Controllers
     /// Deleta o mentor por Id
     /// Atualiza o mentor por Id
     /// </summary>
-    
-   [Route("api/mentor")]
+
+    [Route("api/mentor")]
     public class MentorController : Controller
     {
         private IMentoriaRepository mentoriaReprository;
@@ -36,46 +36,17 @@ namespace Eaton.Mentoria.WebApi.Controllers
         [Route("{id}/mentorias")]
         public IActionResult GetMentorias([FromRoute]int id)
         {
-            var mentorias = mentoriaReprository.Listar(new string[] { "Categoria", "Sede", "Usuario", "Usuario.Perfil" }).Where(mentoria => mentoria.UsuarioId == id);
-
-            mentorias.AsParallel().WithExecutionMode(ParallelExecutionMode.ForceParallelism).ForAll(mentoria => {
-                mentoria.Categoria.Mentorias.Clear();
-                mentoria.Sede.Mentorias.Clear();
-            });
-
-
-            var result = mentorias.Select(obj => new {
-                id = obj.MentoriaId,
-                nome = obj.Nome,
-                ativa = obj.Ativa,
-                categoria = new
+            var mentorias = mentoriaReprository
+                .Listar(new string[] { "Categoria", "Sede", "Usuario", "Usuario.Perfil" })
+                .Where(mentoria => mentoria.UsuarioId == id)
+                .Select(mentoria =>
                 {
-                    nome = obj.Categoria.Nome,
-                    id = obj.CategoriaId
-                },
-                sede = new
-                {
-                    nome = obj.Sede.Nome,
-                    id = obj.SedeId
-                },
-                usuario = new
-                {
-                    id = obj.Usuario.UsuarioId,
-                    email = obj.Usuario.Email,
-                    password = "",
-                    role = obj.Usuario.Role,
-                    ativo = obj.Usuario.Ativo,
-                    perfil = new {
-                        id = obj.Usuario.UsuarioId,
-                        nome = obj.Usuario.Perfil?.Nome,
-                        miniBio = obj.Usuario.Perfil?.MiniBio,
-                        foto = obj.Usuario.Perfil?.Foto,
-                        cep = obj.Usuario.Perfil?.Cep,
-                        sedeId = obj.Usuario.Perfil?.SedeId
-                    }
-                }
-            });
-            return Ok(result);
+                    mentoria.Categoria.Mentorias.Clear();
+                    mentoria.Sede.Mentorias.Clear();
+                    return mentoria;
+                });
+
+            return Ok(mentorias);
 
         }
     }

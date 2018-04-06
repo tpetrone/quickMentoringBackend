@@ -39,41 +39,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
         {
             var aplicacoes = aplicacaoRepository
                 .Listar(new string[] { "Mentorado", "Mentorado.Perfil", "Mentoria", "Mentoria.Categoria" })
-                .Where(x => x.MentoradoId == id)
-                .Select(obj => new
-                {
-                    id = obj.AplicacaoId,
-                    usuario = new
-                    {
-                        id = obj.Mentorado.UsuarioId,
-                        email = obj.Mentorado.Email,
-                        password = "",
-                        role = obj.Mentorado.Role,
-                        ativo = obj.Mentorado.Ativo,
-                        perfil = new
-                        {
-                            id = obj.Mentorado.UsuarioId,
-                            nome = obj.Mentorado.Perfil?.Nome,
-                            miniBio = obj.Mentorado.Perfil?.MiniBio,
-                            foto = obj.Mentorado.Perfil?.Foto,
-                            cep = obj.Mentorado.Perfil?.Cep,
-                            sedeId = obj.Mentorado.Perfil?.SedeId
-                        },
-                    },
-                    mentoria = new
-                    {
-                        id = obj.Mentoria.MentoriaId,
-                        nome = obj.Mentoria.Nome,
-                        categoria = new
-                        {
-                            nome = obj.Mentoria.Categoria.Nome,
-                            id = obj.Mentoria.Categoria.CategoriaId,
-                        }
-                    },
-                    formulario = obj.justificativa,
-                    aceite = obj.Aceite
-
-                });
+                .Where(x => x.MentoradoId == id);
 
             return Ok(aplicacoes);
         }

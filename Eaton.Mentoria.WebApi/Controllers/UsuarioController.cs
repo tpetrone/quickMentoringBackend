@@ -269,10 +269,10 @@ namespace Eaton.Mentoria.WebApi.Controllers
         {
             return Ok(_usuarioRepository
                 .Listar(new[] { "Perfil", "Perfil.Sede" })
-                .Select(obj => {
-                    obj.Perfil?.Sede?.Mentorias?.Clear();
-                    obj.Perfil?.Sede?.Perfis?.Clear();
-                    return obj;
+                .Select(usuario => {
+                    usuario.Perfil?.Sede?.Mentorias?.Clear();
+                    usuario.Perfil?.Sede?.Perfis?.Clear();
+                    return usuario;
                 })
                 .FirstOrDefault(user => user.UsuarioId == id));
         }
