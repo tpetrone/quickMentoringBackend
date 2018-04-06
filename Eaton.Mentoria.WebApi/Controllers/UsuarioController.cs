@@ -48,7 +48,25 @@ namespace Eaton.Mentoria.WebApi.Controllers
         [HttpGet]
         public IActionResult GetAction()
         {
-            return Ok(_usuarioRepository.Listar(new string[] { "Perfil" }));
+            List<UsuarioDomain> lsUsuarioDomain = _usuarioRepository.Listar(new string[] { "Perfil" }).ToList();
+
+            var retornoUsuarios = lsUsuarioDomain.Select(x => new {
+                id = x.UsuarioId,
+                email = x.Email,
+                role =  x.Role,
+                ativo =  x.Ativo,
+                perfil = new  {
+                    id =  x.Perfil.PerfilId,
+                    usuarioId =  x.UsuarioId,
+                    nome =  x.Perfil.Nome,
+                    miniBio =  x.Perfil.MiniBio,
+                    foto =  "",
+                    cep =  x.Perfil.Cep,
+                    sedeId =  x.Perfil.SedeId
+                }
+            }).ToList();
+
+            return Ok(retornoUsuarios);
 
         }
 
@@ -80,7 +98,24 @@ namespace Eaton.Mentoria.WebApi.Controllers
                 if (errors.Any())
                     return BadRequest(errors);
                 else
-                    return Ok(usuario);
+                {
+                    var retornoUsuarios =  new {
+                        id = usuario.UsuarioId,
+                        email = usuario.Email,
+                        role =  usuario.Role,
+                        ativo =  usuario.Ativo,
+                        perfil = new  {
+                            id =  usuario.Perfil.PerfilId,
+                            usuarioId =  usuario.UsuarioId,
+                            nome =  usuario.Perfil.Nome,
+                            miniBio =  usuario.Perfil.MiniBio,
+                            cep =  usuario.Perfil.Cep,
+                            sedeId =  usuario.Perfil.SedeId
+                        }
+                    };
+                }
+
+                return Ok(usuario);
             }
             catch (System.Exception e)
             {
@@ -105,26 +140,26 @@ namespace Eaton.Mentoria.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("Login")]
-        public IActionResult Login([FromBody]UsuarioDomain usuario,
+        public IActionResult Login([FromBody]UsuarioDomain usuario_,
             [FromServices]SigningConfigurations signingConfigurations,
             [FromServices]TokenConfigurations tokenConfigurations)
         {
             try
             {
 
-                UsuarioDomain retornoUsuario = _usuarioRepository.UsuarioExiste(usuario.Email, usuario.Password);
-                if (retornoUsuario != null)
+                UsuarioDomain _usuario = _usuarioRepository.UsuarioExiste(usuario_.Email, usuario_.Password);
+                if (_usuario != null)
                 {
                     ClaimsIdentity identity = new ClaimsIdentity(
-                    new GenericIdentity(retornoUsuario.UsuarioId.ToString(), "Login"),
+                    new GenericIdentity(_usuario.UsuarioId.ToString(), "Login"),
                     new[] {
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
-                        new Claim(JwtRegisteredClaimNames.UniqueName, retornoUsuario.UsuarioId.ToString()),
-                        new Claim("Id", retornoUsuario.UsuarioId.ToString()),
-                        new Claim("Nome", retornoUsuario.Perfil.Nome),
+                        new Claim(JwtRegisteredClaimNames.UniqueName, _usuario.UsuarioId.ToString()),
+                        new Claim("Id", _usuario.UsuarioId.ToString()),
+                        new Claim("Nome", _usuario.Perfil.Nome),
                     });
 
-                    identity.AddClaim(new Claim(ClaimTypes.Role, retornoUsuario.Role));
+                    identity.AddClaim(new Claim(ClaimTypes.Role, _usuario.Role));
 
                     var handler = new JwtSecurityTokenHandler();
                     var securityToken = handler.CreateToken(new SecurityTokenDescriptor
@@ -135,6 +170,22 @@ namespace Eaton.Mentoria.WebApi.Controllers
                         Subject = identity
                     });
                     var token = handler.WriteToken(securityToken);
+
+                    var retornoUsuario =  new {
+                        id = _usuario.UsuarioId,
+                        email = _usuario.Email,
+                        role =  _usuario.Role,
+                        ativo =  _usuario.Ativo,
+                        perfil = new  {
+                            id =  _usuario.Perfil.PerfilId,
+                            usuarioId =  _usuario.UsuarioId,
+                            nome =  _usuario.Perfil.Nome,
+                            miniBio =  _usuario.Perfil.MiniBio,
+                            foto = "",
+                            cep =  _usuario.Perfil.Cep,
+                            sedeId =  _usuario.Perfil.SedeId
+                        }
+                    };
 
                     var retorno = new
                     {
@@ -267,14 +318,35 @@ namespace Eaton.Mentoria.WebApi.Controllers
         [HttpGet("{id}")]
         public IActionResult GetPerfil([FromRoute] int id)
         {
-            return Ok(_usuarioRepository
+            UsuarioDomain _usuario = _usuarioRepository
                 .Listar(new[] { "Perfil", "Perfil.Sede" })
                 .Select(usuario => {
                     usuario.Perfil?.Sede?.Mentorias?.Clear();
                     usuario.Perfil?.Sede?.Perfis?.Clear();
                     return usuario;
                 })
-                .FirstOrDefault(user => user.UsuarioId == id));
+                .FirstOrDefault(user => user.UsuarioId == id);
+
+                var retornoUsuario =  new {
+                        id = _usuario.UsuarioId,
+                        email = _usuario.Email,
+                        role =  _usuario.Role,
+                        ativo =  _usuario.Ativo,
+                        perfil = new  {
+                            id =  _usuario.Perfil.PerfilId,
+                            usuarioId =  _usuario.UsuarioId,
+                            nome =  _usuario.Perfil.Nome,
+                            miniBio =  _usuario.Perfil.MiniBio,
+                            foto = "",
+                            cep =  _usuario.Perfil.Cep,
+                            sede = new {
+                                nome = _usuario.Perfil.Sede.Nome,
+                                id = _usuario.Perfil.Sede.SedeId
+                            }
+                        }
+                    };
+
+            return Ok(retornoUsuario);
         }
     }
 }
