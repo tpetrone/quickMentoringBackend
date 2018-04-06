@@ -270,7 +270,9 @@ namespace Eaton.Mentoria.WebApi.Controllers
             {
                 return BadRequest(e.Message);
             }
-        }        
+        }  
+
+
 
         /// <summary>
         /// Para atualizar o usuário é necessário passar o id do usuário que se deseja atualizar e os dados que serão atualizados do usuário no corpo (BODY) no formato JSON
@@ -348,5 +350,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
 
             return Ok(retornoUsuario);
         }
+
+        
     }
 }
