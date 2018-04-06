@@ -26,7 +26,12 @@ namespace Eaton.Mentoria.Repository.Repositories
             
         }
 
-        
+        public bool UsuarioExiste(int id)
+        {
+            return _dbContext.Usuarios.AsNoTracking().Include("Perfil").Count(x => x.UsuarioId == id) >= 1;
+        }
+
+
 
     }
 }

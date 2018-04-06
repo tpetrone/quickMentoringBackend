@@ -6,5 +6,7 @@ namespace Eaton.Mentoria.Domain.Contracts
     {
         UsuarioDomain UsuarioExiste(string email,string password);
         UsuarioDomain BuscarPorEmail(string email);
+
+        bool UsuarioExiste(int id);
     }
 }

@@ -181,10 +181,8 @@ namespace Eaton.Mentoria.WebApi.Controllers
                     return BadRequest(errors);
                 }
 
-                if (_usuarioRepository.BuscarPorId(id) != null)
-                {
+                if (!_usuarioRepository.UsuarioExiste(id))
                     return NotFound("Usuário nâo encontrado.");
-                }
 
                 usuario.UsuarioId = id;
                 _usuarioRepository.Atualizar(usuario);
