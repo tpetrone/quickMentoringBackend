@@ -302,6 +302,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
                 {
                     return NotFound("Usuário nâo encontrado.");
                 }
+                
 
                 perfil_.Nome = perfil.Nome;
                 perfil_.MiniBio = perfil.MiniBio;
