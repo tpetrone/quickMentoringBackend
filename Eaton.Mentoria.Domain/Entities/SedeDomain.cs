@@ -11,9 +11,11 @@ namespace Eaton.Mentoria.Domain.Entities
        [Key]
        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
        [JsonProperty(PropertyName = "id")]
-       public int SedeId {get; set;} 
+       public int SedeId {get; set;}
 
-       public string Nome {get; set;}
+
+        [JsonProperty(PropertyName = "nome")]
+        public string Nome {get; set;}
 
        public virtual ICollection<PerfilDomain> Perfis { get; set; } 
 

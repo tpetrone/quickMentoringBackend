@@ -16,6 +16,7 @@ namespace Eaton.Mentoria.Domain.Entities
 
         [Required]
         [StringLength(100)]
+        [JsonProperty(PropertyName = "nome")]
         public string Nome { get; set; }
         public virtual ICollection<MentoriaDomain> Mentorias { get; set; }
 

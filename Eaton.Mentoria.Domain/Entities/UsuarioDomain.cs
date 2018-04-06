@@ -16,17 +16,24 @@ namespace Eaton.Mentoria.Domain.Entities
         
         [Required]
         [StringLength(50)]
+        [JsonProperty(PropertyName = "email")]
         public string Email { get; set; }
         
         [Required]
         [StringLength(20)]
+        [JsonProperty(PropertyName = "password")]
         public string Password { get; set; }
         
         [Required]
         [StringLength(20)]
+        [JsonProperty(PropertyName = "role")]
         public string Role { get; set; }
+
+        [JsonProperty(PropertyName = "ativo")]
         public Boolean Ativo { get; set; }
 
+
+        [JsonProperty(PropertyName = "perfil")]
         public virtual PerfilDomain Perfil { get; set; }
 
         public virtual ICollection<HashesDomain> Hashes { get; set; } 

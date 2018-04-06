@@ -17,16 +17,22 @@ namespace Eaton.Mentoria.Domain.Entities
         public bool? Aceite { get; set; }
         
         [ForeignKey("MentoradoId")]
-        [JsonProperty(PropertyName = "usuarioId")]
+        [JsonProperty(PropertyName = "usuario")]
         public virtual UsuarioDomain Mentorado { get; set; }
+
+        [JsonProperty(PropertyName = "usuarioId")]
         public int MentoradoId { get; set; }
         
         [ForeignKey("MentoriaId")]
+        [JsonProperty(PropertyName = "mentoria")]
         public virtual MentoriaDomain Mentoria { get; set; }
+
+        [JsonProperty(PropertyName = "mentoriaId")]
         public int MentoriaId { get; set; }
         
         [Required]
         [StringLength(200)]
+        [JsonProperty(PropertyName = "justificativa")]
         public string justificativa { get; set; }  
 
     }
