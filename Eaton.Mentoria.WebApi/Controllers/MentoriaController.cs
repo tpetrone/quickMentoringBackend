@@ -111,6 +111,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
             {
                 id = mentoria.MentoriaId,
                 nome = mentoria.Nome,
+                ativa = mentoria.Ativa,
                 categoria = new
                 {
                     nome = mentoria.Categoria.Nome,
@@ -146,7 +147,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
         /// <param name="mentoria">Dados da mentoria</param>
         /// <returns></returns>
         [HttpPost]
-        [Authorize("Bearer", Roles = "Mentor")]
+        //[Authorize("Bearer", Roles = "Mentor")]
         public IActionResult Cadastrar([FromBody] MentoriaDomain mentoria)
         {
             try

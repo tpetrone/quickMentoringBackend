@@ -297,14 +297,18 @@ namespace Eaton.Mentoria.WebApi.Controllers
                     return BadRequest(errors);
                 }
 
-                if (perfilRepository.BuscarPorId(id) != null)
+                var perfil_ = perfilRepository.BuscarPorId(perfil.PerfilId);
+                if ( perfil_ == null)
                 {
                     return NotFound("Usuário nâo encontrado.");
                 }
 
-                perfil.PerfilId = id;
-                perfilRepository.Atualizar(perfil);
-                return Ok(id);
+                perfil_.Nome = perfil.Nome;
+                perfil_.MiniBio = perfil.MiniBio;
+                perfil_.Cep = perfil.Cep;
+                perfil_.SedeId = perfil.SedeId;
+                perfilRepository.Atualizar(perfil_);
+                return Ok(perfil_);
             }
             catch (System.Exception e)
             {
