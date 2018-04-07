@@ -20,12 +20,12 @@ namespace Eaton.Mentoria.WebApi.Controllers
     public class AplicacaoController : Controller
     {
         private IAplicacaoRepository _aplicacaoRepository;
-        private IUsuarioRepository usuarioRepository;
+        private IUsuarioRepository _usuarioRepository;
 
         public AplicacaoController(IAplicacaoRepository aplicacaoRepository, IUsuarioRepository usuarioRepository)
         {
-            _aplicacaoRepository = aplicacaoRepository;
-            this.usuarioRepository = usuarioRepository;
+            this._aplicacaoRepository = aplicacaoRepository;
+            this._usuarioRepository = usuarioRepository;
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
         /// <param name="aplicacao">Recebe um objeto aplicação</param>
         /// <returns>Se cadastrado retorna ok(200) ou se não cadastrou retorna bad request(400)</returns>
         [HttpPost]
-        [Authorize("Bearer")]
+        //[Authorize("Bearer")]
         public IActionResult Cadastrar([FromBody] AplicacaoDomain aplicacao)
         {
             try
@@ -120,25 +120,18 @@ namespace Eaton.Mentoria.WebApi.Controllers
         {
             try
             {
-                if (!usuarioRepository.Listar().Any(d => d.UsuarioId == aplicacao.MentoradoId))
-                    return BadRequest("Usuário não existe");
+                var aplicacao_ = _aplicacaoRepository.BuscarPorId(id);
+
+                if (aplicacao_ == null)
+                    return BadRequest("Aplicação não existe!");
 
 
-                if (ModelState.IsValid)
-                {
-                    aplicacao.AplicacaoId = id;
-                    _aplicacaoRepository.Atualizar(aplicacao);
+                
+                    aplicacao_.Aceite = aplicacao.Aceite;
+                    _aplicacaoRepository.Atualizar(aplicacao_);
 
-                }
-                var errors = ModelState.Select(x => x.Value.Errors)
-                           .Where(y => y.Count > 0)
-                           .ToList();
-
-
-                if (errors.Any())
-                    return BadRequest(errors);
-                else
-                    return Ok(aplicacao);
+                
+                    return Ok(aplicacao_);
             }
             catch (System.Exception e)
             {

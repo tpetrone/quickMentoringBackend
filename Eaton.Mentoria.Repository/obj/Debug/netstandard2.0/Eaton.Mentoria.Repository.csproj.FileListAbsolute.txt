@@ -50,3 +50,14 @@ C:\Users\Brian\source\repos\quickMentoringBackend\Eaton.Mentoria.Repository\obj\
 C:\Users\Brian\source\repos\quickMentoringBackend\Eaton.Mentoria.Repository\obj\Debug\netstandard2.0\Eaton.Mentoria.Repository.csproj.CopyComplete
 C:\Users\Brian\source\repos\quickMentoringBackend\Eaton.Mentoria.Repository\obj\Debug\netstandard2.0\Eaton.Mentoria.Repository.dll
 C:\Users\Brian\source\repos\quickMentoringBackend\Eaton.Mentoria.Repository\obj\Debug\netstandard2.0\Eaton.Mentoria.Repository.pdb
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Repository\bin\Debug\netstandard2.0\Eaton.Mentoria.Repository.deps.json
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Repository\bin\Debug\netstandard2.0\Eaton.Mentoria.Repository.dll
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Repository\bin\Debug\netstandard2.0\Eaton.Mentoria.Repository.pdb
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Repository\bin\Debug\netstandard2.0\Eaton.Mentoria.Domain.dll
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Repository\bin\Debug\netstandard2.0\Eaton.Mentoria.Domain.pdb
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Repository\obj\Debug\netstandard2.0\Eaton.Mentoria.Repository.csproj.CoreCompileInputs.cache
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Repository\obj\Debug\netstandard2.0\Eaton.Mentoria.Repository.AssemblyInfoInputs.cache
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Repository\obj\Debug\netstandard2.0\Eaton.Mentoria.Repository.AssemblyInfo.cs
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Repository\obj\Debug\netstandard2.0\Eaton.Mentoria.Repository.csproj.CopyComplete
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Repository\obj\Debug\netstandard2.0\Eaton.Mentoria.Repository.dll
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Repository\obj\Debug\netstandard2.0\Eaton.Mentoria.Repository.pdb

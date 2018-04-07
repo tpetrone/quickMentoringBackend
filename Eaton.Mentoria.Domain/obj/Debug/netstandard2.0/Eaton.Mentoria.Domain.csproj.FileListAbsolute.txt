@@ -39,3 +39,11 @@ C:\Users\Brian\source\repos\quickMentoringBackend\Eaton.Mentoria.Domain\obj\Debu
 C:\Users\Brian\source\repos\quickMentoringBackend\Eaton.Mentoria.Domain\obj\Debug\netstandard2.0\Eaton.Mentoria.Domain.AssemblyInfo.cs
 C:\Users\Brian\source\repos\quickMentoringBackend\Eaton.Mentoria.Domain\obj\Debug\netstandard2.0\Eaton.Mentoria.Domain.dll
 C:\Users\Brian\source\repos\quickMentoringBackend\Eaton.Mentoria.Domain\obj\Debug\netstandard2.0\Eaton.Mentoria.Domain.pdb
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Domain\bin\Debug\netstandard2.0\Eaton.Mentoria.Domain.deps.json
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Domain\bin\Debug\netstandard2.0\Eaton.Mentoria.Domain.dll
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Domain\bin\Debug\netstandard2.0\Eaton.Mentoria.Domain.pdb
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Domain\obj\Debug\netstandard2.0\Eaton.Mentoria.Domain.csproj.CoreCompileInputs.cache
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Domain\obj\Debug\netstandard2.0\Eaton.Mentoria.Domain.AssemblyInfoInputs.cache
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Domain\obj\Debug\netstandard2.0\Eaton.Mentoria.Domain.AssemblyInfo.cs
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Domain\obj\Debug\netstandard2.0\Eaton.Mentoria.Domain.dll
+c:\Users\CodeXP\Documents\Projeto\quickMentoringBackend\Eaton.Mentoria.Domain\obj\Debug\netstandard2.0\Eaton.Mentoria.Domain.pdb

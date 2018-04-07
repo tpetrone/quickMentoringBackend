@@ -28,7 +28,7 @@ namespace Eaton.Mentoria.Repository.Repositories
 
         public bool UsuarioExiste(int id)
         {
-            return _dbContext.Usuarios.AsNoTracking().Include("Perfil").Count(x => x.UsuarioId == id) >= 1;
+            return _dbContext.Usuarios.AsNoTracking().Include("Perfil").Include("Perfil.Sede").Count(x => x.UsuarioId == id) >= 1;
         }
 
 
