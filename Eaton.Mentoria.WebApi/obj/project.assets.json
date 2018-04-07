@@ -12435,11 +12435,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\CodeXP\\Documents\\Projeto\\quickMentoringBackend\\Eaton.Mentoria.WebApi\\Eaton.Mentoria.WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickmentoringbackend\\Eaton.Mentoria.WebApi\\Eaton.Mentoria.WebApi.csproj",
       "projectName": "Eaton.Mentoria.WebApi",
-      "projectPath": "C:\\Users\\CodeXP\\Documents\\Projeto\\quickMentoringBackend\\Eaton.Mentoria.WebApi\\Eaton.Mentoria.WebApi.csproj",
+      "projectPath": "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickmentoringbackend\\Eaton.Mentoria.WebApi\\Eaton.Mentoria.WebApi.csproj",
       "packagesPath": "C:\\Users\\CodeXP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\CodeXP\\Documents\\Projeto\\quickMentoringBackend\\Eaton.Mentoria.WebApi\\obj\\",
+      "outputPath": "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickmentoringbackend\\Eaton.Mentoria.WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12456,11 +12456,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\CodeXP\\Documents\\Projeto\\quickMentoringBackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj": {
-              "projectPath": "C:\\Users\\CodeXP\\Documents\\Projeto\\quickMentoringBackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj"
+            "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickmentoringbackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj": {
+              "projectPath": "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickmentoringbackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj"
             },
-            "C:\\Users\\CodeXP\\Documents\\Projeto\\quickMentoringBackend\\Eaton.Mentoria.Repository\\Eaton.Mentoria.Repository.csproj": {
-              "projectPath": "C:\\Users\\CodeXP\\Documents\\Projeto\\quickMentoringBackend\\Eaton.Mentoria.Repository\\Eaton.Mentoria.Repository.csproj"
+            "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickmentoringbackend\\Eaton.Mentoria.Repository\\Eaton.Mentoria.Repository.csproj": {
+              "projectPath": "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickmentoringbackend\\Eaton.Mentoria.Repository\\Eaton.Mentoria.Repository.csproj"
             }
           }
         }

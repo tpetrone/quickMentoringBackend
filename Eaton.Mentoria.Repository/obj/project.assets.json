@@ -3000,11 +3000,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\CodeXP\\Documents\\Projeto\\quickMentoringBackend\\Eaton.Mentoria.Repository\\Eaton.Mentoria.Repository.csproj",
+      "projectUniqueName": "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickmentoringbackend\\Eaton.Mentoria.Repository\\Eaton.Mentoria.Repository.csproj",
       "projectName": "Eaton.Mentoria.Repository",
-      "projectPath": "C:\\Users\\CodeXP\\Documents\\Projeto\\quickMentoringBackend\\Eaton.Mentoria.Repository\\Eaton.Mentoria.Repository.csproj",
+      "projectPath": "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickmentoringbackend\\Eaton.Mentoria.Repository\\Eaton.Mentoria.Repository.csproj",
       "packagesPath": "C:\\Users\\CodeXP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\CodeXP\\Documents\\Projeto\\quickMentoringBackend\\Eaton.Mentoria.Repository\\obj\\",
+      "outputPath": "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickmentoringbackend\\Eaton.Mentoria.Repository\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3021,8 +3021,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\CodeXP\\Documents\\Projeto\\quickMentoringBackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj": {
-              "projectPath": "C:\\Users\\CodeXP\\Documents\\Projeto\\quickMentoringBackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj"
+            "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickmentoringbackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj": {
+              "projectPath": "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickmentoringbackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj"
             }
           }
         }

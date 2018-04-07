@@ -318,11 +318,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\CodeXP\\Documents\\Projeto\\quickMentoringBackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickmentoringbackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj",
       "projectName": "Eaton.Mentoria.Domain",
-      "projectPath": "C:\\Users\\CodeXP\\Documents\\Projeto\\quickMentoringBackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj",
+      "projectPath": "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickmentoringbackend\\Eaton.Mentoria.Domain\\Eaton.Mentoria.Domain.csproj",
       "packagesPath": "C:\\Users\\CodeXP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\CodeXP\\Documents\\Projeto\\quickMentoringBackend\\Eaton.Mentoria.Domain\\obj\\",
+      "outputPath": "C:\\Users\\CodeXP\\Desktop\\Back-Brian\\quickmentoringbackend\\Eaton.Mentoria.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

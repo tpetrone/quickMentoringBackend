@@ -50,23 +50,23 @@ namespace Eaton.Mentoria.WebApi.Controllers
         {
             List<UsuarioDomain> lsUsuarioDomain = _usuarioRepository.Listar(new string[] { "Perfil" }).ToList();
 
-            var retornoUsuarios = lsUsuarioDomain.Select(x => new {
-                id = x.UsuarioId,
-                email = x.Email,
-                role =  x.Role,
-                ativo =  x.Ativo,
-                perfil = new  {
-                    id =  x.Perfil.PerfilId,
-                    usuarioId =  x.UsuarioId,
-                    nome =  x.Perfil.Nome,
-                    miniBio =  x.Perfil.MiniBio,
-                    foto =  "",
-                    cep =  x.Perfil.Cep,
-                    sedeId =  x.Perfil.SedeId
-                }
-            }).ToList();
+            // var retornoUsuarios = lsUsuarioDomain.Select(x => new {
+            //     id = x.UsuarioId,
+            //     email = x.Email,
+            //     role =  x.Role,
+            //     ativo =  x.Ativo,
+            //     perfil = new  {
+            //         id =  x.Perfil.PerfilId,
+            //         usuarioId =  x.UsuarioId,
+            //         nome =  x.Perfil.Nome,
+            //         miniBio =  x.Perfil.MiniBio,
+            //         foto =  "",
+            //         cep =  x.Perfil.Cep,
+            //         sedeId =  x.Perfil.SedeId
+            //     }
+            // }).ToList();
 
-            return Ok(retornoUsuarios);
+            return Ok(lsUsuarioDomain);
 
         }
 
@@ -333,26 +333,26 @@ namespace Eaton.Mentoria.WebApi.Controllers
                 })
                 .FirstOrDefault(user => user.UsuarioId == id);
 
-                var retornoUsuario =  new {
-                        id = _usuario.UsuarioId,
-                        email = _usuario.Email,
-                        role =  _usuario.Role,
-                        ativo =  _usuario.Ativo,
-                        perfil = new  {
-                            id =  _usuario.Perfil.PerfilId,
-                            usuarioId =  _usuario.UsuarioId,
-                            nome =  _usuario.Perfil.Nome,
-                            miniBio =  _usuario.Perfil.MiniBio,
-                            foto = "",
-                            cep =  _usuario.Perfil.Cep,
-                            sede = new {
-                                nome = _usuario.Perfil.Sede.Nome,
-                                id = _usuario.Perfil.Sede.SedeId
-                            }
-                        }
-                    };
+                // var retornoUsuario =  new {
+                //         id = _usuario.UsuarioId,
+                //         email = _usuario.Email,
+                //         role =  _usuario.Role,
+                //         ativo =  _usuario.Ativo,
+                //         perfil = new  {
+                //             id =  _usuario.Perfil.PerfilId,
+                //             usuarioId =  _usuario.UsuarioId,
+                //             nome =  _usuario.Perfil.Nome,
+                //             miniBio =  _usuario.Perfil.MiniBio,
+                //             foto = "",
+                //             cep =  _usuario.Perfil.Cep,
+                //             sede = new {
+                //                 nome = _usuario.Perfil.Sede.Nome,
+                //                 id = _usuario.Perfil.Sede.SedeId
+                //             }
+                //         }
+                //     };
 
-            return Ok(retornoUsuario);
+            return Ok(_usuario);
         }
 
         
