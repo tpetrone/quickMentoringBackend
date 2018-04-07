@@ -8,5 +8,7 @@ namespace Eaton.Mentoria.Domain.Contracts
         UsuarioDomain BuscarPorEmail(string email);
 
         bool UsuarioExiste(int id);
+
+        int Deletar(int id);
     }
 }

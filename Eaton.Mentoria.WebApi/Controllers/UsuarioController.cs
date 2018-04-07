@@ -263,7 +263,7 @@ namespace Eaton.Mentoria.WebApi.Controllers
                     return NotFound();
 
                 //Caso tenha encontrado o usuario exclui
-                _usuarioRepository.Deletar(usuario);
+                _usuarioRepository.Deletar(usuario.UsuarioId);
                 return Ok(usuario);
             }
             catch (System.Exception e)

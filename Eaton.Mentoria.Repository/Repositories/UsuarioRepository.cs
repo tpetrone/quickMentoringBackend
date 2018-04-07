@@ -31,7 +31,36 @@ namespace Eaton.Mentoria.Repository.Repositories
             return _dbContext.Usuarios.AsNoTracking().Include("Perfil").Include("Perfil.Sede").Count(x => x.UsuarioId == id) >= 1;
         }
 
+        public int Deletar(int id)
+        {
 
+            try
+            {
+                foreach (AplicacaoDomain i in _dbContext.Aplicacoes.Where(d => d.MentoradoId == id).ToList())
+                {
+                    _dbContext.Set<AplicacaoDomain>().Remove(i);
+                }
+                foreach (MentoriaDomain i in _dbContext.Mentorias.Where(d => d.UsuarioId == id).ToList())
+                {
+                    _dbContext.Set<MentoriaDomain>().Remove(i);
+                }
+                foreach (PerfilDomain i in _dbContext.Perfis.Where(d => d.UsuarioId== id).ToList())
+                {
+                    _dbContext.Set<PerfilDomain>().Remove(i);
+                }
+
+                _dbContext.SaveChanges();
+
+                _dbContext.Set<UsuarioDomain>().Remove(_dbContext.Usuarios.First(d => d.UsuarioId == id));
+                return _dbContext.SaveChanges();
+            }
+            catch (System.Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
 
     }
 }
