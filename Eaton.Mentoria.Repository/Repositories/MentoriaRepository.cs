@@ -23,5 +23,27 @@ namespace Eaton.Mentoria.Repository.Repositories
             }
             return false;
         }
+
+        public int Deletar(int id)
+        {
+
+            try
+            {
+                foreach (AplicacaoDomain i in _dbContext.Aplicacoes.Where(d=> d.MentoriaId == id).ToList())
+                {
+                    _dbContext.Set<AplicacaoDomain>().Remove(i);
+                }
+                _dbContext.SaveChanges();
+
+                _dbContext.Set<MentoriaDomain>().Remove(_dbContext.Mentorias.First(d=> d.MentoriaId == id));
+                return _dbContext.SaveChanges();
+            }
+            catch (System.Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
     }
 }

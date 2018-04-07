@@ -223,7 +223,8 @@ namespace Eaton.Mentoria.WebApi.Controllers
                     return NotFound();
 
                 //Caso tenha encontrado a mentoria exclui
-                _mentoriaRepository.Deletar(mentoria);
+                _mentoriaRepository.Deletar(mentoria.MentoriaId);
+
                 return Ok(mentoria);
             }
             catch (System.Exception e)
