@@ -1,5 +1,5 @@
-C:\Users\CodeXP\Desktop\Back-Brian\quickmentoringbackend\Eaton.Mentoria.WebApi
---output-path=obj\Debug\netcoreapp2.0\
+/Users/corujasdev/visualstudiocode/dotnetcore/senai_alunos/quickMentoringBackend/Eaton.Mentoria.WebApi
+--output-path=obj/Debug/netcoreapp2.0/
 --application-name=Eaton.Mentoria.WebApi
---content-root=C:\Users\CodeXP\Desktop\Back-Brian\quickmentoringbackend\Eaton.Mentoria.WebApi
+--content-root=/Users/corujasdev/visualstudiocode/dotnetcore/senai_alunos/quickMentoringBackend/Eaton.Mentoria.WebApi
 --file=
